@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emma's Sourdough  Micro-Bakery</title>
+    <!-- Tailwind CSS para el diseño moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link href="https://googleapis.com" rel="stylesheet">
+    <style>
+           body { font-family: 'Inter', sans-serif; margin: 0; }
+           /* ESTILOS DE EMERGENCIA (Si Tailwind falla) */
+           svg { max-width: 48px; max-height: 48px; display: inline-block; }
+           .hidden { display: none; } /* Evita que el menú salga doble */
+           /* Animación de tarjetas */
+           .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+           .card-hover:hover { 
+           transform: translateY(-5px); 
+           box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); 
+           }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navegación -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            
+            <!-- Logo e Icono (Ahora interactivo) -->
+            <a href="#" class="flex-shrink-0 flex items-center gap-2 group transition-transform hover:scale-105 active:scale-95" title="Ir al inicio">
+            <!-- SVG del Logo -->
+                   <svg class="w-12 h-12 transition-colors group-hover:drop-shadow-md" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+                    <rect x="2" y="4" width="20" height="16" rx="2" stroke="#94a3b8" stroke-width="1.5" />
+                    <path d="M2 10h20" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2" />
+                    <path d="M7 17c0-3.5 2-6 5-6s5 2.5 5 6H7z" fill="#d97706" stroke="#92400e" stroke-width="1.5" />
+                    <path d="M10 13l2 2m2-2l-2 2" stroke="#fef3c7" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M9 7c0-1 1-1 1-2M14 7c0-1 1-1 1-2" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round" />
+                   </svg>
+    
+             <!-- Texto del Logo -->
+                <span class="font-bold text-lg md:text-xl tracking-tight text-gray-900 leading-tight group-hover:text-amber-700 transition-colors">
+                 Emma's Sourdough<br class="sm:hidden"> Micro-Bakery
+                </span>
+            </a>
+
+            <!-- Bloque Derecho: Enlaces + Carrito -->
+            <div class="flex items-center gap-4 md:gap-8">
+                
+                 <!-- Menú Escritorio (Con Buscador Interactivo) -->
+<div class="hidden md:flex items-center space-x-6">
+    <!-- Enlaces de Navegación -->
+    <div class="flex space-x-4">
+        <a href="#" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Inicio</a>
+        <a href="#productos" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Productos</a>
+        <a href="#contacto" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Contacto</a>
+    </div>
+
+    <!-- Buscador Interactivo -->
+    <div class="relative group">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <svg class="w-4 h-4 text-gray-400 group-focus-within:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+        </span>
+        <input
+            id="buscador-input" 		
+            type="text" 
+            placeholder="Buscar pan..." 
+            class="block w-48 pl-10 pr-3 py-1.5 border border-gray-200 rounded-full text-sm placeholder-gray-400
+                   focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 
+                   transition-all duration-300 focus:w-64 bg-gray-50/50"
+        >
+    </div>
+</div>
+</div>
+
+                <!-- Bloque de botones (Carrito + Hamburguesa) -->
+<div class="flex items-center gap-2 md:gap-8">
+    
+    <!-- Botón Carrito (Visible en móvil y PC) -->
+    <button onclick="toggleCarrito()" class="relative p-2 text-gray-600 hover:text-amber-700 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+        </svg>
+        <span class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-amber-600 rounded-full">0</span>
+    </button>
+
+                <!-- Botón Hamburguesa Corregido -->
+<button id="mobile-menu-button" class="text-gray-600 hover:text-amber-700 p-2 focus:outline-none flex items-center justify-center">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+</button>
+    </div>
+
+<!-- Menú Desplegable Móvil -->
+<div id="mobile-menu" class="hidden bg-white border-t border-gray-100 shadow-xl absolute top-full left-0 w-full z-50 p-4">
+    <!-- Buscador para Móvil -->
+    <div class="relative mb-4">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+        </span>
+        <input 
+            id="buscador-input-movil"
+			type="text" 
+            placeholder="Buscar pan..." 
+            class="buscador-compartido block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-amber-500 bg-gray-50"
+        >
+    </div>
+
+    <!-- Enlaces -->
+    <a href="#" onclick="toggleMenu()" class="block px-6 py-3 text-gray-600 hover:bg-amber-50 font-bold border-b border-gray-50">Inicio</a>
+    <a href="#productos" onclick="toggleMenu()" class="block px-6 py-3 text-gray-600 hover:bg-amber-50 font-bold border-b border-gray-50">Productos</a>
+    <a href="#contacto" onclick="toggleMenu()" class="block px-6 py-3 text-gray-600 hover:bg-amber-50 font-bold">Contacto</a>
+</div>
+
+</nav>
+
+<!-- Sección Principal (Hero) -->
+<header class="bg-[#faf7f2] pt-10 pb-2"> 
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+        
+        <!-- Título con degradado y relieve (sombra proyectada) -->
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-8 bg-gradient-to-r from-amber-700 to-orange-500 bg-clip-text text-transparent drop-shadow-md" 
+             style="filter: drop-shadow(4px 4px 4px rgba(139, 69, 19, 0.3));">
+             Emma's<br class="sm:hidden"> Bakery
+        </h1>
+
+
+        <!-- LA IMAGEN (Se adapta sin recortarse) -->
+        <img src="https://www.image2url.com/r2/default/images/1776978774504-763a088a-31ca-450c-8a33-a5bcca3f29da.jpg" 
+             alt="Decoración Emma's Bakery" 
+             class="w-auto h-48 md:h-64 object-contain rounded-2xl shadow-md border-2 border-white">
+        
+    </div>
+
+        <!-- Bloque de la historia con color Chocolate Artesanal -->
+<div class="bg-[#3d2b1f] rounded-[3rem] p-6 md:p-12 shadow-2xl max-w-5xl mx-auto mt-8 mb-0">
+    <!-- Añadimos text-center aquí para centrar todos los párrafos -->
+    <div class="space-y-6 text-center">
+        <p class="text-lg md:text-xl text-stone-100 leading-relaxed font-light">
+            En <span class="font-bold text-amber-200">Emma's Sourdough Micro-Bakery</span>, cada hogaza cuenta nuestra historia y 
+            late con un propósito profundo. Lo que nació como un acto de amor puro para buscar la mejor nutrición para mi hija,
+            se ha transformado en el motor de bienestar que hoy mantiene sana y fuerte a mi familia. Para nosotros, el pan no es solo
+            un producto; es la base de una vida plena y saludable.
+        </p>
+
+        <p class="text-lg md:text-xl text-stone-100 leading-relaxed font-light">
+            Nuestra masa madre es un legado vivo que trasciende el tiempo y crece con cada horneada, permitiéndonos compartir este bienestar
+            con quienes buscan una alimentación más consciente. 
+        </p>
+        
+        <p class="text-lg md:text-xl text-stone-100 leading-relaxed font-light">	
+            Llevamos a tu mesa un pan real, artesanal y honesto, con la convicción de que
+            el mismo amor con el que cuidamos a nuestra familia, tiene el poder de nutrir y fortalecer a la tuya.
+        </p>
+    </div>
+</div>
+
+
+        <!-- Botón del Catálogo CENTRADO -->
+<div class="mt-8 flex justify-center relative z-10">
+    <a href="#productos" class="inline-block bg-amber-800 text-white font-bold px-10 py-4 rounded-full shadow-lg hover:bg-amber-900 transition transform hover:scale-105">
+        Ver Catálogo
+    </a>
+</div>
+        
+</header>
+
+<!-- Separador de Efecto "Nueva Página" -->
+<div class="h-6 md:h-8 bg-[#faf7f2]"></div> <!-- Espacio en blanco/crema -->
+
+<div id="productos" class="relative">
+    <!-- Línea decorativa sutil -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-amber-800/20 rounded-full"></div>
+    
+    </div>
+
+    <!-- Sección de Productos -->
+    <!-- Encabezado de la sección de Productos -->
+    <div class="max-w-7xl mx-auto px-4 pt-16 pb-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Nuestros Productos</h2>
+        <p class="mt-4 text-gray-600">Horneados en lotes pequeños con fermentación natural para garantizar su frescura.</p>
+    </div>
+	
+<!-- AQUÍ PEGAS EL PUNTO 1 (Los filtros) -->
+<div class="max-w-7xl mx-auto px-4 mb-12">
+    <div class="flex flex-wrap justify-center gap-3">
+    <!-- El botón "Todos" empieza con el nuevo estilo activo: fondo ámbar claro y texto café -->
+    <button onclick="filtrar('todos', event)" class="filter-btn bg-amber-100 text-amber-900 border-amber-300 px-6 py-2 rounded-full font-bold shadow-sm transition">Todos</button>
+    <button onclick="filtrar('hogazas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Hogazas</button>
+    <button onclick="filtrar('dulce', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Panes de Dulce</button>
+    <button onclick="filtrar('rolls', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Rolls de Canela</button>
+    <button onclick="filtrar('galletas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Galletas</button>
+    <button onclick="filtrar('descartes', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Preparaciones con Descartes</button>
+	<button onclick="filtrar('Adicionales', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Adicionales</button>
+</div>
+</div>
+
+<!-- Luego sigue tu etiqueta main que ya tienes -->
+<main id="productos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div id="grid-productos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <!-- Aquí se cargarán con el JavaScript -->
+    </div>
+    </div>
+
+	<main id="productos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Contenedor donde se inyectarán los productos con JavaScript -->
+    <div id="grid-productos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+    <!-- Los productos se cargarán aquí -->
+        </div>
+    </main>
+
+<!-- Modal de Producto Enriquecido (Ajustado para fotos completas) -->
+<div id="modal-producto" class="fixed inset-0 z-[100] hidden bg-black/60 flex items-center justify-center p-4 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl flex flex-col md:flex-row h-auto max-h-[95vh] md:max-h-[90vh]">
+        
+        <!-- Galería de Imágenes (Izquierda) - AJUSTADA PARA NO CORTAR -->
+        <div class="md:w-1/2 bg-[#fdfaf6] relative flex items-center justify-center min-h-[300px] md:min-h-[450px]">
+            <!-- object-contain asegura que la foto se vea entera sin importar su forma -->
+            <img id="modal-img-principal" src="" 
+                 class="w-full h-full object-contain max-h-[45vh] md:max-h-full p-4 transition-all duration-300" 
+                 alt="Foto del pan">
+            
+            <!-- Contenedor para miniaturas de fotos extras -->
+            <div id="modal-thumbnails" class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 px-4"></div>
+            
+            <!-- Botón cerrar para celulares -->
+            <button onclick="cerrarModal()" class="absolute top-4 left-4 bg-white/90 rounded-full p-2 text-gray-800 md:hidden shadow-md">✕</button>
+        </div>
+
+        <!-- Información (Derecha) -->
+        <div class="p-6 md:p-10 md:w-1/2 flex flex-col bg-white">
+            <!-- Botón cerrar para computadoras -->
+            <div class="hidden md:flex justify-end mb-2">
+                <button onclick="cerrarModal()" class="text-gray-400 hover:text-amber-800 text-2xl transition-colors">✕</button>
+            </div>
+            
+            <span id="modal-cat" class="text-[10px] uppercase tracking-[0.2em] text-amber-600 font-bold mb-2"></span>
+            <h3 id="modal-titulo" class="text-3xl font-bold text-gray-900 mb-4 font-serif leading-tight"></h3>
+            
+            <!-- Descripción detallada (CON ESPACIO AL FINAL PARA LECTURA) -->
+<div class="flex-grow overflow-y-auto max-h-[40vh] md:max-h-[50vh] pr-2 mb-6 text-left" style="-webkit-overflow-scrolling: touch;">
+    <!-- Agregamos pb-8 para que la última línea respire -->
+    <div class="pb-8"> 
+        <p id="modal-desc-larga" class="text-gray-600 leading-relaxed text-sm md:text-base whitespace-pre-line text-center"></p>
+        
+        <div id="detalle-especial" class="mt-6 border-t border-dashed border-stone-200 pt-4">
+            <h4 class="text-[11px] font-bold text-gray-400 uppercase mb-2 italic">¿Por qué es especial?</h4>
+            <p class="text-xs text-stone-500 italic leading-relaxed">
+                Fermentación natural de 18 horas en frío, sin aditivos ni levaduras comerciales.
+            </p>
+            <p class="text-xs text-stone-500 italic leading-relaxed">
+                Nutrición 100% real y honesta para tu familia.
+            </p>
+        </div>
+    </div>
+</div>
+
+            <!-- CONTENEDOR PARA EL CONTADOR Y PRECIO (El JavaScript llenará esto) -->
+            <div id="modal-footer-acciones" class="flex items-center justify-between border-t pt-6 mt-auto">
+                <!-- Aquí aparecerán dinámicamente el precio y los botones + / - -->
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Separador Romántico y Fino Final -->
+<div class="py-12 bg-white flex flex-col items-center justify-center">
+    <!-- Línea decorativa minimalista -->
+    <div class="w-12 h-px bg-amber-800/20 mb-12"></div>
+    
+    <div class="text-center">
+        <!-- Frase Principal -->
+        <p class="text-amber-900/80 font-light tracking-[0.4em] uppercase text-[10px] md:text-xs px-6 italic leading-loose">
+            Hecho con calma <span class="mx-3 text-amber-500/40">♥</span> 
+            Horneando con el alma <span class="mx-3 text-amber-500/40">♥</span> 
+            Nutriendo con amor
+		</p>
+		       
+        
+        <!-- Tu Firma Personalizada -->
+        <div class="mt-8 flex flex-col items-center gap-2">
+            <!-- "Con cariño..." en el mismo estilo que la frase de arriba -->
+            <p class="text-amber-900/50 font-light tracking-[0.3em] uppercase text-[9px] md:text-[10px] italic">
+                Con cariño . . . <span class="text-amber-500/60"></span>
+            </p>
+            
+            <!-- "Andrea" en la letra delicada y con el color vivo -->
+            <p class="text-[#b45d41] text-3xl md:text-4xl" style="font-family: 'Great Vibes', cursive;">
+                Andrea ♥
+            </p>
+        </div>
+    </div>
+    
+    <!-- Línea decorativa minimalista -->
+    <div class="w-12 h-px bg-amber-800/20 mt-12"></div>
+</div>
+
+</div>
+
+
+<!-- Pie de página (Footer) -->
+<footer id="contacto" class="bg-gray-900 text-white py-12 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+        
+        <!-- Columna 1: Logo, Descripción y Enlaces en la misma línea -->
+        <div class="space-y-6">
+            <div class="flex items-center gap-3">
+                <!-- Logo de Masa Madre Corregido -->
+                <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+                    <rect x="2" y="4" width="20" height="16" rx="2" stroke="#94a3b8" stroke-width="1.5" />
+                    <path d="M2 10h20" stroke="#475569" stroke-width="1.5" stroke-dasharray="2 2" />
+                    <path d="M7 17c0-3.5 2-6 5-6s5 2.5 5 6H7z" fill="#d97706" stroke="#92400e" stroke-width="1.5" />
+                    <path d="M10 13l2 2m2-2l-2 2" stroke="#fef3c7" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M9 7c0-1 1-1 1-2M14 7c0-1 1-1 1-2" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+                <span class="font-bold text-xl tracking-tight leading-tight">
+                    Emma's Sourdough<br> Micro-Bakery
+                </span>
+            </div>
+            
+            <p class="text-gray-400 text-sm">
+               Pan artesanal hecho con amor.
+            </p>
+			
+			<p class="text-gray-400 text-sm">
+                18 horas de fermentación en frío. 
+			</p>
+			
+            <p class="text-gray-400 text-sm">
+                Cuidando tu salud y la de tu familia.
+            </p>
+            
+        </div>
+<!-- Enlaces Escritorio + Carrito -->
+<div class="hidden md:flex space-x-8 items-center">
+    <a href="#" class="text-gray-600 hover:text-amber-700 px-3 py-2 text-sm font-medium transition">Inicio</a>
+    <a href="#productos" class="text-gray-600 hover:text-amber-700 px-3 py-2 text-sm font-medium transition">Productos</a>
+    <a href="#contacto" class="text-gray-600 hover:text-amber-700 px-3 py-2 text-sm font-medium transition">Contacto</a>
+    
+    <!-- Botón Carrito Móvil en Footer (Corregido) -->
+<button onclick="toggleCarrito()" class="relative p-2 text-gray-400 hover:text-amber-500 transition">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+  </svg>
+  <span class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-amber-600 rounded-full">
+    0
+  </span>
+</button>
+
+</div>
+
+<!-- Añade el carrito también al lado del botón hamburguesa para móviles -->
+<div class="md:hidden flex items-center gap-4">
+    <button onclick="toggleCarrito()" class="relative p-2 text-gray-600">
+        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+        <span class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-amber-600 rounded-full">0</span>
+    </button>
+    <button id="mobile-menu-button" class="text-gray-600 hover:text-amber-700">
+        <i data-lucide="menu" class="w-8 h-8"></i>
+    </button>
+</div>
+
+        <!-- Columna 2: Espacio decorativo o mensaje adicional -->
+        <div class="flex items-center">
+            <p class="text-gray-500 italic text-sm border-l-2 border-gray-800 pl-4">
+                "Nutriendo el futuro de nuestra familia con la tradición de la masa madre."
+            </p>
+        </div>
+
+        <!-- Columna 3: Información de Contacto -->
+<div class="space-y-4">
+    <h4 class="text-lg font-semibold text-white">Hablemos de Masa Madre</h4>
+    <ul class="space-y-4 text-sm text-gray-400">
+        
+        <!-- Enlace de Correo con Mensaje Automático -->
+        <li>
+            <a href="mailto:andystef1691@hotmail.com?subject=Hablemos%20de%20masa%20madre&body=Hola%20Andrea,%20quisiera%20saber%20de...%20" class="flex items-center gap-3 hover:text-amber-500 transition-colors">
+                <svg class="w-6 h-6 text-amber-600 group-hover:text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                <span>andystef1691@hotmail.com</span>
+            </a>
+        </li>
+
+        <!-- Enlace de WhatsApp con Mensaje Automático -->
+        <li>
+            <a href="https://wa.me/593998272773?text=¡Hola%20Andrea!%20Me%20gustaría%20saber%20de..." target="_blank" class="flex items-center gap-3 hover:text-green-500 transition-colors group">
+                <svg class="w-6 h-6 text-green-600 group-hover:text-green-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+				</svg>
+                <span>+593 998 272 773</span>
+            </a>
+        </li>
+    </ul>
+</div>
+    </div>
+
+    <!-- Línea final de derechos -->
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-500">
+        &copy; 2026 Emma's Sourdough Micro-Bakery. Desarrollado con amor para una vida saludable.
+    </div>
+	
+
+
+</footer>
+
+<!-- Fondo oscuro (Overlay) -->
+<div id="carrito-overlay" onclick="toggleCarrito()" class="fixed inset-0 bg-black/50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+<!-- Ventana Lateral del Carrito -->
+<div id="carrito-lateral" class="fixed inset-y-0 right-0 w-full md:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    <!-- Cabecera -->
+    <div class="p-6 border-b flex justify-between items-center bg-gray-50">
+        <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+            <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg>
+            Tu Bolsa de pan
+        </h2>
+        <button onclick="toggleCarrito()" class="text-gray-500 hover:text-gray-800 p-2 text-2xl">✕</button>
+    </div>
+
+    <!-- Lista de Productos (Aquí el JS inyectará los panes) -->
+    <div id="lista-carrito" class="flex-grow overflow-y-auto p-6 space-y-4">
+        <p class="text-center text-gray-500 mt-10 italic">Tu bolsa está esperando por un pan caliente...</p>
+    </div>
+
+    <!-- Total y Botón de WhatsApp -->
+    <div class="p-6 border-t bg-gray-50 space-y-4">
+        <div class="flex justify-between items-center">
+            <span class="text-gray-600 font-medium">Total:</span>
+            <span id="total-carrito" class="text-2xl font-bold text-amber-900">$0.00</span>
+        </div>
+        <button onclick="enviarPedidoWhatsApp()" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition shadow-lg flex items-center justify-center gap-3">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir por WhatsApp
+        </button>
+    </div>
+</div>
+
+    <!-- Lógica de JavaScript para cargar productos -->
+	
+<script src="https://unpkg.com"></script>
+<script>
+// 1. LISTA DE PRODUCTOS (Corregida)
+const productos = [
+       { 
+        id: 1, 
+        categoria: 'hogazas', 
+        titulo: "Hogaza Tradicional de Masa Madre.", 
+        precio: 4.50, 
+        descripcion: "El pan de masa madre clásico es la esencia de nuestra micro-panadería. Elaborado con una mezcla equilibrada de harina y masa madre madura y activa, logramos una hogaza con una corteza dorada y rústica, y un interior suave y aireado.", 
+        detalles: `Peso: 500 grs.
+		Ingredientes: • harina blanca e integral • masa madre activa y madura • agua filtrada • sal`, 
+        imagenes: ["https://shaggy-teal-04h1s9e4vf.edgeone.app/IMG_20260420_210813.jpg"] 
+       },
+	   { 
+        id: 2, 
+        categoria: 'dulce', 
+        titulo: "Pan de Masa Madre con Doble Chocolate Semiamargo.", 
+        precio: 4.50, 
+        descripcion: "Nuestra hogaza es una experiencia sensorial única. Elaborada con cacao orgánico para una profundidad de sabor inigualable. Este pan destaca por su miga tierna y el dulzor que lo aportan generosas chispas de chocolate que se funden en el interior, creando el equilibrio perfecto con nuestra masa madre madura.", 
+        detalles: `Peso: 450 grs.
+		Ingredientes: • harina • masa madre activa y madura • cacao orgánico • chispas de chocolate semiamargo • azucar morena • sal • agua`, 
+        imagenes: ["https://wily-blue-4kg8kgo9s5.edgeone.app/PLAN%20DE%20CHOCOLATE%20DOBLE_1.jpg"] 
+       },
+	   { 
+        id: 3, 
+        categoria: 'rolls', 
+        titulo: "Rolls de Canela de Masa Madre.", 
+        precio: 4.50, 
+        descripcion: "Nuestros Rolls de Canela no son como los tradicionales. Al utilizar masa madre activa, logramos una masa mucho más ligera, con un aroma complejo y una textura que se deshace en la boca. Horneados con mantequilla y leche entera, son el equilibrio perfecto entre lo dulce y lo artesanal.", 
+        detalles: `Empaque de 6 rolls de canela. Peso: 450 grs.
+		Ingredientes: • harina • masa madre activa y madura • leche entera • mantequilla • azucar morena • huevos • sal`, 
+        imagenes: ["https://depressed-amaranth-mfftstdu6a.edgeone.app/ROLLS_1.jpg", "https://awful-lavender-wpci6wnrqp.edgeone.app/ROLLS_2.jpg", "https://redundant-teal-mhqokn9i53.edgeone.app/ROLLS_3.jpg"] 
+       },
+	   { 
+        id: 4, 
+        categoria: 'Adicionales', 
+        titulo: "Mantequilla de Almendra Blanqueada y Tostada.", 
+        precio: 7.99, 
+        descripcion: "Disfruta de la pureza de la almendra en su máxima expresión. Almendras blanqueadas y ligeramente tostadas. 100% natural, sin conservantes ni aceites añadidos. Ideal para quienes buscan una textura más fina y un sabor más suave.", 
+        detalles: `Peso: 230 grs. 
+		Puedes solicitarla con tu endulzante favorito: miel de abeja, maple o sin azúcar añadida.
+		Ingredientes: • 100% almendras blanqueadas y tostadas • Pizca de sal (Opcional)`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1777044687663-659807bf-5237-4172-ad69-781fe738e327.jpg", "https://www.image2url.com/r2/default/images/1777044990719-3610696b-5c66-4e64-b887-ac3853bc4427.jpg"] 
+       },
+	   { 
+        id: 5, 
+        categoria: 'Adicionales', 
+        titulo: "Mantequilla de Almendras Tostadas", 
+        precio: 9.99, 
+        descripcion: "Nuestra mantequilla es 100% natural, elaborada en pequeños lotes para garantizar su frescura. El secreto está en el tostado lento de las almendras enteras, lo que libera sus aceites naturales y crea un sabor intenso, ahumado y ligeramente dulce sin necesidad de azúcar añadida.",
+		detalles: `Peso: 230 grs. 
+		Puedes solicitarla con tu endulzante favorito: miel de abeja, maple o sin azúcar añadida y sin pizca de sal.
+		Ingredientes:• 100% almendras tostadas • Pizca de sal (Opcional)`,
+        imagenes: ["https://www.image2url.com/r2/default/images/1777044687663-659807bf-5237-4172-ad69-781fe738e327.jpg", "https://www.image2url.com/r2/default/images/1777044990719-3610696b-5c66-4e64-b887-ac3853bc4427.jpg"] 
+       },
+	   { 
+        id: 6, 
+        categoria: 'descartes', 
+        titulo: "Scones con Chispas de Chocolate", 
+        precio: 5.50, 
+        descripcion: "Nuestros scones son el equilibrio perfecto entre una galleta rústica y un bizcocho tierno. Elaborados con chispas de chocolate semidulce.", 
+        detalles: `Ingredientes:• Harina • Azúcar morena • Sal • Polvo de hornear • Mantequilla • Chispas chocolate • Huevos • Crema de leche • Leche y • Extracto de vainilla`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1777041466809-2a46a9a0-d93a-4e04-b831-34f42ddbaf29.jpg", "https://www.image2url.com/r2/default/images/1777044351530-5f648a1d-9b58-49e2-8e0a-648ed61535aa.jpg"] 
+       }
+];
+
+// 2. VARIABLES DE ESTADO (Memoria del carrito y categoría)
+let carrito = JSON.parse(localStorage.getItem('carritoBakery')) || [];
+let categoriaActual = 'todos'; 
+
+function guardarCarrito() {
+    localStorage.setItem('carritoBakery', JSON.stringify(carrito));
+}
+
+// 3. FUNCIÓN MÁGICA: Mantiene los productos filtrados
+function ejecutarFiltrado() {
+    const filtrados = categoriaActual === 'todos' ? productos : productos.filter(p => p.categoria === categoriaActual);
+    cargarProductos(filtrados);
+}
+
+// 4. DIBUJAR PRODUCTOS EN PANTALLA
+function cargarProductos(lista) {
+    const grid = document.getElementById('grid-productos');
+    if (!grid) return;
+
+    grid.innerHTML = lista.map(p => {
+        const cantidad = carrito.filter(item => item.id === p.id).length;
+        const foto = p.imagenes[0];
+
+        return `
+            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col p-4 text-left">
+                <div class="relative overflow-hidden group cursor-pointer" onclick="abrirModal(${p.id})">
+                    <img src="${foto}" class="w-full h-48 object-cover rounded-xl transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white text-[10px] font-bold bg-amber-900/80 px-4 py-2 rounded-full italic">Ver detalles</span>
+                    </div>
+                </div>
+                <div class="mt-4 flex-grow flex flex-col">
+                    <span class="text-[10px] uppercase text-amber-600 font-bold mb-1">${p.categoria}</span>
+                    <h3 class="font-bold text-gray-900 cursor-pointer hover:text-amber-800 transition" onclick="abrirModal(${p.id})">${p.titulo}</h3>
+                    <span class="text-2xl font-extrabold text-amber-800 mt-2">$${p.precio.toFixed(2)}</span>
+                    <div class="mt-4 h-12">
+                        ${cantidad === 0 ? 
+                            `<button onclick="cambiarCantidad(${p.id}, 1)" class="w-full h-full bg-amber-100 text-amber-900 rounded-xl font-bold hover:bg-amber-200 transition text-sm">Carrito</button>` :
+                            `<div class="flex h-full items-center justify-between bg-amber-50 rounded-xl border border-amber-200 overflow-hidden">
+                                <button onclick="cambiarCantidad(${p.id}, -1)" class="w-1/3 h-full hover:bg-amber-200 text-amber-900 font-bold">-</button>
+                                <span class="font-bold text-amber-900">${cantidad}</span>
+                                <button onclick="cambiarCantidad(${p.id}, 1)" class="w-1/3 h-full hover:bg-amber-200 text-amber-900 font-bold">+</button>
+                            </div>`
+                        }
+                    </div>
+                </div>
+            </div>`;
+    }).join('');
+}
+
+// Función para mostrar/ocultar el botón según el scroll
+window.onscroll = function() {
+  const btn = document.getElementById("btn-subir");
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    btn.classList.remove("opacity-0", "invisible");
+    btn.classList.add("opacity-100", "visible");
+  } else {
+    btn.classList.remove("opacity-100", "visible");
+    btn.classList.add("opacity-0", "invisible");
+  }
+};
+
+// Función para subir suavemente
+function subirArriba() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+
+
+// 5. LÓGICA DE SUMAR/RESTAR (Respetando el filtro)
+function cambiarCantidad(id, delta) {
+    if (delta === 1) {
+        carrito.push(productos.find(p => p.id === id));
+    } else {
+        const index = carrito.findIndex(item => item.id === id);
+        if (index !== -1) carrito.splice(index, 1);
+    }
+    guardarCarrito();
+    actualizarCarritoUI();
+    ejecutarFiltrado(); // <-- Mantiene la pestaña donde estabas
+    
+    const p = productos.find(prod => prod.id === id);
+    if(p) actualizarBotonesModal(p);
+}
+
+function eliminarGrupoDelCarrito(id) {
+    carrito = carrito.filter(item => item.id !== id);
+    guardarCarrito();
+    actualizarCarritoUI();
+    ejecutarFiltrado();
+}
+
+// 6. POP-UP (MODAL)
+// Busca esta función y déjala así:
+function abrirModal(id) {
+    const p = productos.find(prod => prod.id === id);
+    const modal = document.getElementById('modal-producto');
+    const bloqueEspecial = document.getElementById('detalle-especial');
+    
+    // 1. Título y Categoría
+    document.getElementById('modal-titulo').innerText = p.titulo;
+    document.getElementById('modal-cat').innerText = p.categoria;
+    
+    // 2. Descripción + Ingredientes (con saltos de línea y centrados)
+    // Combinamos descripción y detalles con dos saltos de línea entre ellos
+    document.getElementById('modal-desc-larga').innerText = p.descripcion + "\n\n" + (p.detalles || "");
+    
+    // 3. Lógica para ocultar el bloque "Especial" en descartes y adicionales
+    // Importante: Revisa que las categorías coincidan exactamente con tu lista
+    if (p.categoria === 'descartes' || p.categoria === 'Adicionales') {
+        bloqueEspecial.classList.add('hidden');
+    } else {
+        bloqueEspecial.classList.remove('hidden');
+    }
+    
+    // 4. Imagen principal
+    document.getElementById('modal-img-principal').src = p.imagenes[0];
+    
+    // 5. Miniaturas (Solo si hay más de una imagen)
+    const thumbs = document.getElementById('modal-thumbnails');
+    if (p.imagenes.length > 1) {
+        thumbs.innerHTML = p.imagenes.map(img => `
+            <img src="${img}" 
+                 onclick="cambiarFotoModal('${img}')" 
+                 class="w-14 h-14 object-cover rounded-lg border-2 border-white shadow-md cursor-pointer hover:border-amber-500 transition">
+        `).join('');
+    } else {
+        thumbs.innerHTML = '';
+    }
+    
+    // 6. Configurar botones de cantidad y agregar
+    actualizarBotonesModal(p);
+    
+    // 7. Mostrar el modal
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Bloquea el scroll de la página de fondo
+}
+function actualizarBotonesModal(p) {
+    const cantidad = carrito.filter(item => item.id === p.id).length;
+    const footer = document.getElementById('modal-footer-acciones');
+    if(!footer) return;
+    footer.innerHTML = `
+        <span class="text-3xl font-extrabold text-amber-900">$${p.precio.toFixed(2)}</span>
+        <div class="flex items-center bg-stone-100 rounded-xl border border-stone-200 overflow-hidden shadow-sm">
+            ${cantidad === 0 ? 
+                `<button onclick="cambiarCantidad(${p.id}, 1)" class="bg-amber-800 text-white px-8 py-3 font-bold hover:bg-amber-900 transition">Añadir</button>` :
+                `<button onclick="cambiarCantidad(${p.id}, -1)" class="px-4 py-3 hover:bg-stone-200 text-amber-900 font-bold">-</button>
+                 <span class="px-6 py-3 font-bold text-xl text-gray-900">${cantidad}</span>
+                 <button onclick="cambiarCantidad(${p.id}, 1)" class="px-4 py-3 hover:bg-stone-200 text-amber-900 font-bold">+</button>`
+            }
+        </div>`;
+}
+
+// 7. FILTROS Y WHATSAPP
+function filtrar(cat, evento) {
+    categoriaActual = cat; // Guarda la pestaña activa
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-amber-100', 'text-amber-900', 'border-amber-300', 'font-bold');
+        btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+    });
+    evento.currentTarget.classList.add('bg-amber-100', 'text-amber-900', 'border-amber-300', 'font-bold');
+    ejecutarFiltrado();
+}
+
+function enviarPedidoWhatsApp() {
+    // 1. Verificamos si hay panes
+    if (!carrito || carrito.length === 0) {
+        alert("Tu bolsa está vacía");
+        return;
+    }
+    
+    // 2. Agrupamos los panes y calculamos el total internamente
+    const agrupados = carrito.reduce((acc, p) => {
+        if (!acc[p.titulo]) {
+            acc[p.titulo] = { cantidad: 0, precio: p.precio };
+        }
+        acc[p.titulo].cantidad++;
+        return acc;
+    }, {});
+
+    // 3. Construimos el mensaje
+    let mensaje = "¡Hola Andrea! Me gustaría hacer el siguiente pedido:\n\n";
+    let sumaTotal = 0;
+
+    for (const [nombre, datos] of Object.entries(agrupados)) {
+        const subtotal = datos.cantidad * datos.precio;
+        sumaTotal += subtotal;
+        mensaje += `🥖 *${datos.cantidad}x* ${nombre} ($${subtotal.toFixed(2)})\n`;
+    }
+    
+    mensaje += `\n*Total a realizar: $${sumaTotal.toFixed(2)}*`;
+
+    // 4. EL FORMATO QUE INDICASTE: wa.me/numero
+    const numero = "593998272773";
+    const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
+    
+    // 5. REDIRECCIÓN DIRECTA (Sin abrir pestañas nuevas para evitar bloqueos)
+    window.location.href = url;
+}
+
+
+// 8. CARRITO UI, CIERRE Y ARRANQUE
+function actualizarCarritoUI() {
+    const lista = document.getElementById('lista-carrito');
+    const totalElem = document.getElementById('total-carrito');
+    const badges = document.querySelectorAll('.bg-amber-600.rounded-full');
+    badges.forEach(b => b.innerText = carrito.length);
+    if (carrito.length === 0) {
+        lista.innerHTML = '<p class="text-center text-gray-500 mt-10 italic">Tu bolsa está esperando por un pan caliente...</p>';
+        totalElem.innerText = "$0.00";
+        return;
+    }
+    const agrupados = carrito.reduce((acc, p) => {
+        if (!acc[p.id]) acc[p.id] = { ...p, cantidad: 0 };
+        acc[p.id].cantidad++;
+        return acc;
+    }, {});
+    let suma = 0;
+    lista.innerHTML = Object.values(agrupados).map(item => {
+        suma += (item.precio * item.cantidad);
+        return `<div class="bg-gray-50 p-4 rounded-xl mb-3 border text-left">
+            <div class="flex justify-between font-bold text-sm mb-2"><span>${item.titulo}</span><span>$${(item.precio * item.cantidad).toFixed(2)}</span></div>
+            <div class="flex items-center justify-between">
+                <div class="flex bg-white rounded-lg border overflow-hidden">
+                    <button onclick="cambiarCantidad(${item.id}, -1)" class="px-3 py-1">-</button>
+                    <span class="px-3 py-1 font-bold border-x">${item.cantidad}</span>
+                    <button onclick="cambiarCantidad(${item.id}, 1)" class="px-3 py-1">+</button>
+                </div>
+                <button onclick="eliminarGrupoDelCarrito(${item.id})" class="text-red-400 text-xs">✕ Quitar</button>
+            </div>
+        </div>`;
+    }).join('');
+    totalElem.innerText = `$${suma.toFixed(2)}`;
+}
+
+function cambiarFotoModal(url) { document.getElementById('modal-img-principal').src = url; }
+function cerrarModal() { document.getElementById('modal-producto').classList.add('hidden'); document.body.style.overflow = 'auto'; }
+function toggleCarrito() {
+    document.getElementById('carrito-lateral').classList.toggle('translate-x-full');
+    document.getElementById('carrito-overlay').classList.toggle('hidden');
+    setTimeout(() => document.getElementById('carrito-overlay').classList.toggle('opacity-0'), 10);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    ejecutarFiltrado(); // Arranca mostrando "Todos"
+    actualizarCarritoUI();
+    const btnMenu = document.getElementById('mobile-menu-button');
+    if(btnMenu) btnMenu.onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+    document.querySelectorAll('button').forEach(btn => {
+        if(btn.innerHTML.includes('M16 11V7')) btn.onclick = toggleCarrito;
+    });
+});
+
+
+function toggleMenu(event) {
+  // 1. Buscamos el menú móvil por su ID
+  const menu = document.getElementById('mobile-menu');
+  
+  // 2. Lo ocultamos añadiendo la clase 'hidden'
+  if (menu) {
+    menu.classList.add('hidden');
+  }
+}
+
+// Lógica unificada para buscadores (PC y Móvil)
+const inputsBusqueda = ['buscador-input', 'buscador-input-movil'];
+
+inputsBusqueda.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    el.addEventListener('input', (e) => {
+        const termino = e.target.value.toLowerCase().trim();
+        
+        // 1. Si escribe, bajamos a la sección de productos
+        if (termino.length > 0) {
+            const seccion = document.getElementById('productos');
+            if(seccion) seccion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // 2. Si borra, vuelve al filtro actual
+        if (termino === "") {
+            ejecutarFiltrado(); 
+            return;
+        }
+
+        // 3. Filtrado preciso por título o categoría
+        const filtrados = productos.filter(p => 
+            p.titulo.toLowerCase().includes(termino) || 
+            p.categoria.toLowerCase() === termino
+        );
+
+        // 4. Cargamos los resultados
+        cargarProductos(filtrados);
+    });
+});
+
+</script>
+
+<!-- Botón para volver arriba -->
+<button id="btn-subir" onclick="subirArriba()" 
+  class="fixed bottom-24 right-6 bg-amber-800 text-white p-3 rounded-full shadow-2xl z-40 transition-all duration-300 hover:bg-amber-900 opacity-0 invisible">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+  </svg>
+</button>
+
+</body>
+
+</html>
