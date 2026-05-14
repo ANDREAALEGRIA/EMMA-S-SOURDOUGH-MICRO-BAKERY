@@ -157,7 +157,7 @@
         
         <p class="text-lg md:text-xl text-stone-100 leading-relaxed font-light">	
             Llevamos a tu mesa un pan real, artesanal y honesto, con la convicción de que
-            el mismo amor con el que cuidamos a nuestra familia, tiene el poder de nutrir y fortalecer a la tuya.
+            el mismo amor con el que cuidamos a nuestra familia, tiene el poder de nutrir y fortalecer la tuya.
         </p>
     </div>
 </div>
@@ -186,6 +186,9 @@
     <div class="max-w-7xl mx-auto px-4 pt-16 pb-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Nuestros Productos</h2>
         <p class="mt-4 text-gray-600">Horneados en lotes pequeños con fermentación natural para garantizar su frescura.</p>
+		<p class="mt-4 text-gray-600 font-bold">Días de toma de pedidos: Lunes, Miércoles, Viernes y Sábados.</p>
+		<p class="mt-4 text-gray-600 font-bold">Horario: 08:00 a 17:00</p>
+		<p class="mt-4 text-gray-600 font-bold">Días de entrega: Lunes, Miércoles y Viernes.</p>
     </div>
 	
 <!-- AQUÍ PEGAS EL PUNTO 1 (Los filtros) -->
@@ -199,6 +202,7 @@
     <button onclick="filtrar('galletas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Galletas</button>
     <button onclick="filtrar('descartes', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Preparaciones con Descartes</button>
 	<button onclick="filtrar('Adicionales', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Adicionales</button>
+	<button onclick="filtrar('tortas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">tortas</button>
 </div>
 </div>
 
@@ -465,8 +469,8 @@ const productos = [
 	   { 
         id: 2, 
         categoria: 'dulce', 
-        titulo: "Pan de Masa Madre con Doble Chocolate Semiamargo.", 
-        precio: 4.50, 
+        titulo: "Pan de Doble Chocolate Semiamargo de Masa Madre.", 
+        precio: 4.65, 
         descripcion: "Nuestra hogaza es una experiencia sensorial única. Elaborada con cacao orgánico para una profundidad de sabor inigualable. Este pan destaca por su miga tierna y el dulzor que lo aportan generosas chispas de chocolate que se funden en el interior, creando el equilibrio perfecto con nuestra masa madre madura.", 
         detalles: `Peso: 450 grs.
 		Ingredientes: • harina • masa madre activa y madura • cacao orgánico • chispas de chocolate semiamargo • azucar morena • sal • agua`, 
@@ -486,7 +490,7 @@ const productos = [
         id: 4, 
         categoria: 'Adicionales', 
         titulo: "Mantequilla de Almendra Blanqueada y Tostada.", 
-        precio: 7.99, 
+        precio: 9.99, 
         descripcion: "Disfruta de la pureza de la almendra en su máxima expresión. Almendras blanqueadas y ligeramente tostadas. 100% natural, sin conservantes ni aceites añadidos. Ideal para quienes buscan una textura más fina y un sabor más suave.", 
         detalles: `Peso: 230 grs. 
 		Puedes solicitarla con tu endulzante favorito: miel de abeja, maple o sin azúcar añadida.
@@ -497,7 +501,7 @@ const productos = [
         id: 5, 
         categoria: 'Adicionales', 
         titulo: "Mantequilla de Almendras Tostadas", 
-        precio: 9.99, 
+        precio: 7.99, 
         descripcion: "Nuestra mantequilla es 100% natural, elaborada en pequeños lotes para garantizar su frescura. El secreto está en el tostado lento de las almendras enteras, lo que libera sus aceites naturales y crea un sabor intenso, ahumado y ligeramente dulce sin necesidad de azúcar añadida.",
 		detalles: `Peso: 230 grs. 
 		Puedes solicitarla con tu endulzante favorito: miel de abeja, maple o sin azúcar añadida y sin pizca de sal.
@@ -508,10 +512,46 @@ const productos = [
         id: 6, 
         categoria: 'descartes', 
         titulo: "Scones con Chispas de Chocolate", 
-        precio: 5.50, 
+        precio: 1.50, 
         descripcion: "Nuestros scones son el equilibrio perfecto entre una galleta rústica y un bizcocho tierno. Elaborados con chispas de chocolate semidulce.", 
         detalles: `Ingredientes:• Harina • Azúcar morena • Sal • Polvo de hornear • Mantequilla • Chispas chocolate • Huevos • Crema de leche • Leche y • Extracto de vainilla`, 
-        imagenes: ["https://www.image2url.com/r2/default/images/1777041466809-2a46a9a0-d93a-4e04-b831-34f42ddbaf29.jpg", "https://www.image2url.com/r2/default/images/1777044351530-5f648a1d-9b58-49e2-8e0a-648ed61535aa.jpg"] 
+        imagenes: ["https://www.image2url.com/r2/default/images/1778793350672-5510bbfe-8252-43f4-ae03-4ec2d1be9c51.jpg", "https://www.image2url.com/r2/default/images/1777041466809-2a46a9a0-d93a-4e04-b831-34f42ddbaf29.jpg", "https://www.image2url.com/r2/default/images/1777044351530-5f648a1d-9b58-49e2-8e0a-648ed61535aa.jpg"] 
+       },
+	   { 
+        id: 7, 
+        categoria: 'descartes', 
+        titulo: "Scones de Descarte de Masa Madre", 
+        precio: 2.35, 
+        descripcion: "Nuestros scones son el equilibrio perfecto entre una galleta rústica y un bizcocho tierno. Elaborados con descarte de masa madre.", 
+        detalles: `Ingredientes:• Harina • Azúcar morena • Sal • Polvo de hornear • Mantequilla • Huevos • Descarte de masa madre • Crema de leche y • Extracto de vainilla`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1778793251745-d8dc1da1-2644-4981-a588-e63876af3f17.jpg"] 
+       },
+	   { 
+        id: 8, 
+        categoria: 'tortas', 
+        titulo: "Torta de Zanahoria con Descarte de Masa Madre", 
+        precio: 25, 
+        descripcion: "¡Tan hermosa como deliciosa! Este Naked Cake de zanahoria aprovecha el descarte de masa madre para lograr una humedad y textura inigualables. El contraste visual de sus capas con el frosting de queso crema es espectacular, y su sabor especiado equilibra a la perfección la cremosidad y el toque ácido del relleno. Una obra de arte rústica. 🥕🎂", 
+        detalles: `Ingredientes:• Descarte de masa madre • Huevos • Crema agria • Extracto de vainilla • Aceite de canola • Harina • Azúcar morena • Canela • Nueces • Almendras • Gengibre • Clavo de olor • Polvo de hornear •Bicarbonato de sodio • Sal y • Zanahoria`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1778792961360-78dedfbc-914e-49b7-9222-604ae05a477a.jpg", "https://www.image2url.com/r2/default/images/1778793042452-3383c2e1-5699-431d-8bdf-412f3a2d9d9e.jpg"] 
+       },
+	   { 
+        id: 9, 
+        categoria: 'Adicionales', 
+        titulo: "English Muffins de Masa Madre", 
+        precio: 4.5, 
+        descripcion: "¡El rey de los desayunos y brunches! Estos English Muffins de masa madre están llenos de esos alvéolos (agujeritos) perfectos para atrapar la mantequilla derretida, la mermelada o el huevo pochado. Tostados por fuera, increíblemente suaves por dentro y con ese toque único de la masa madre que los hace irresistibles. 🍳🍯", 
+        detalles: `Ingredientes:• Descarte de masa madre • Huevos • Crema agria • Extracto de vainilla • Aceite de canola • Harina • Azúcar morena • Canela • Nueces • Almendras • Gengibre • Clavo de olor • Polvo de hornear •Bicarbonato de sodio • Sal y • Zanahoria`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1778793687622-ca19f9e3-74ad-462a-bd4d-4357f12b3a8e.jpg"] 
+       },
+	   { 
+        id: 10, 
+        categoria: 'Adicionales', 
+        titulo: "Pan de Hamburguesa de Masa Madre", 
+        precio: 3.5, 
+        descripcion: "¡El match perfecto para tus hamburguesas! Estos panes de masa madre tienen una miga esponjosa pero con la estructura ideal para aguantar todas tus salsas sin romperse. Su sabor artesanal con un toque láctico eleva cualquier hamburguesa casera a un nivel profesional. Dorados, brillantes y con semillas de sésamo. 🍔✨", 
+        detalles: `Ingredientes:• Descarte de masa madre • Huevos • Crema agria • Extracto de vainilla • Aceite de canola • Harina • Azúcar morena • Canela • Nueces • Almendras • Gengibre • Clavo de olor • Polvo de hornear •Bicarbonato de sodio • Sal y • Zanahoria`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1778793716953-1ff9d58a-3c8e-40d2-a168-3a74509bd4de.jpg"] 
        }
 ];
 
