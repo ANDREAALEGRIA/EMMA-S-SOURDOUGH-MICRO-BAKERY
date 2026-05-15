@@ -197,12 +197,12 @@
     <!-- El botón "Todos" empieza con el nuevo estilo activo: fondo ámbar claro y texto café -->
     <button onclick="filtrar('todos', event)" class="filter-btn bg-amber-100 text-amber-900 border-amber-300 px-6 py-2 rounded-full font-bold shadow-sm transition">Todos</button>
     <button onclick="filtrar('hogazas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Hogazas</button>
-    <button onclick="filtrar('dulce', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Panes de Dulce</button>
+    <button onclick="filtrar('panes', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Panes</button>
     <button onclick="filtrar('rolls', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Rolls de Canela</button>
     <button onclick="filtrar('galletas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Galletas</button>
     <button onclick="filtrar('descartes', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Preparaciones con Descartes</button>
-	<button onclick="filtrar('Adicionales', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Adicionales</button>
-	<button onclick="filtrar('tortas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">tortas</button>
+	<button onclick="filtrar('adicionales', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Adicionales</button>
+	<button onclick="filtrar('tortas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Tortas</button>
 </div>
 </div>
 
@@ -468,11 +468,11 @@ const productos = [
        },
 	   { 
         id: 2, 
-        categoria: 'dulce', 
+        categoria: 'panes', 
         titulo: "Pan de Doble Chocolate Semiamargo de Masa Madre.", 
         precio: 4.50, 
         descripcion: "Nuestra hogaza es una experiencia sensorial única. Elaborada con cacao orgánico para una profundidad de sabor inigualable. Este pan destaca por su miga tierna y el dulzor que lo aportan generosas chispas de chocolate que se funden en el interior, creando el equilibrio perfecto con nuestra masa madre madura.", 
-        detalles: `Peso: 420 grs.
+        detalles: `<p class="mt-4 text-gray-600 font-bold">Peso:</p> 420 grs.
 		Ingredientes: • harina • masa madre activa y madura • cacao orgánico • chispas de chocolate semiamargo • azucar morena • sal • agua`, 
         imagenes: ["https://wily-blue-4kg8kgo9s5.edgeone.app/PLAN%20DE%20CHOCOLATE%20DOBLE_1.jpg"] 
        },
@@ -488,7 +488,7 @@ const productos = [
        },
 	   { 
         id: 4, 
-        categoria: 'Adicionales', 
+        categoria: 'adicionales', 
         titulo: "Mantequilla de Almendra Blanqueada y Tostada.", 
         precio: 9.99, 
         descripcion: "Disfruta de la pureza de la almendra en su máxima expresión. Almendras blanqueadas y ligeramente tostadas. 100% natural, sin conservantes ni aceites añadidos. Ideal para quienes buscan una textura más fina y un sabor más suave.", 
@@ -499,7 +499,7 @@ const productos = [
        },
 	   { 
         id: 5, 
-        categoria: 'Adicionales', 
+        categoria: 'adicionales', 
         titulo: "Mantequilla de Almendras Tostadas", 
         precio: 7.99, 
         descripcion: "Nuestra mantequilla es 100% natural, elaborada en pequeños lotes para garantizar su frescura. El secreto está en el tostado lento de las almendras enteras, lo que libera sus aceites naturales y crea un sabor intenso, ahumado y ligeramente dulce sin necesidad de azúcar añadida.",
@@ -539,7 +539,7 @@ const productos = [
        },
 	   { 
         id: 9, 
-        categoria: 'Adicionales', 
+        categoria: 'panes', 
         titulo: "English Muffins de Masa Madre", 
         precio: 4.30, 
         descripción: "¡El rey de los desayunos y brunches! Estos English Muffins de masa madre están llenos de esos alvéolos (agujeritos) perfectos para atrapar la mantequilla derretida, la mermelada o el huevo pochado. Tostados por fuera, increíblemente suaves por dentro y con ese toque único de la masa madre que los hace irresistibles. 🍳🍯.", 
@@ -549,7 +549,7 @@ const productos = [
        },
 	   { 
         id: 10, 
-        categoria: 'Adicionales', 
+        categoria: 'panes', 
         titulo: "Pan de Hamburguesa de Masa Madre", 
         precio: 4.30, 
         descripcion: "¡El match perfecto para tus hamburguesas! Estos panes de masa madre tienen una miga esponjosa pero con la estructura ideal para aguantar todas tus salsas sin romperse. Su sabor artesanal con un toque láctico eleva cualquier hamburguesa casera a un nivel profesional. Dorados, brillantes y con semillas de sésamo. 🍔✨.", 
