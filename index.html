@@ -196,50 +196,89 @@
         </div>
         <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 shadow-sm">
             <span class="font-bold text-gray-900 block mb-1">📍 Puntos de Entrega</span>
-            • Base Naval Sur (Guayaquil)<br>• Urb. Mallorca Village (La Aurora)
+            • Base Naval Sur (Guayaquil) y Urb. Mallorca Village (La Aurora)<br>• Envíos a domicilio disponibles.
         </div>
     </div>
 
-    <!-- Selector de Fecha de Entrega Interactivo y Automatizado -->
-    <div class="mt-8 max-w-xs mx-auto text-left">
-        <label for="fecha-entrega" class="block text-sm font-bold text-gray-800 mb-2 text-center">
-            Selecciona tu fecha de entrega preferida:
-        </label>
-        <select id="fecha-entrega" class="w-full bg-white border border-gray-300 rounded-xl py-3 px-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-gray-900 font-medium cursor-pointer transition">
-            <!-- Las opciones válidas se generarán automáticamente aquí -->
-        </select>
+    <!-- Bloque de Selectores Interactivos y Dirección -->
+    <div class="mt-8 max-w-md mx-auto space-y-4 text-left">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Selector 1: Fecha de Entrega -->
+            <div>
+                <label for="fecha-entrega" class="block text-sm font-bold text-gray-800 mb-2">
+                    Fecha de entrega:
+                </label>
+                <select id="fecha-entrega" class="w-full bg-white border border-gray-300 rounded-xl py-3 px-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 text-gray-900 font-medium cursor-pointer transition">
+                    <!-- Las opciones válidas se generarán automáticamente aquí -->
+                </select>
+            </div>
+
+            <!-- Selector 2: Lugar de Entrega / Envío -->
+            <div>
+                <label for="lugar-entrega" class="block text-sm font-bold text-gray-800 mb-2">
+                    Método de entrega:
+                </label>
+                <select id="lugar-entrega" onchange="evaluarMetodoEntrega()" class="w-full bg-white border border-gray-300 rounded-xl py-3 px-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 text-gray-900 font-medium cursor-pointer transition">
+                    <option value="Base Naval Sur - Guayaquil" data-costo="0">Retiro: Base Naval Sur (Gye)</option>
+                    <option value="Urb. Mallorca Village - La Aurora" data-costo="0">Retiro: Mallorca Village (La Aurora)</option>
+                    <option value="Envío a casa (La Aurora)" data-costo="2">Envío a casa: La Aurora (+$2.00)</option>
+                    <option value="Envío a casa (Guayaquil)" data-costo="4">Envío a casa: Guayaquil (+$4.00)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Campo Dinámico: Dirección de Envío (Oculto por defecto) -->
+        <div id="contenedor-direccion" class="hidden transition-all duration-300">
+            <label for="direccion-envio" class="block text-sm font-bold text-gray-800 mb-2">
+                Dirección exacta de entrega:
+            </label>
+            <textarea id="direccion-envio" rows="2" placeholder="Ej: Urb. Villa Club, Etapa Aura, Mz 4 Vía 12. Junto a..." class="w-full bg-white border border-gray-300 rounded-xl py-3 px-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 text-gray-900 font-medium placeholder-gray-400 transition"></textarea>
+        </div>
     </div>
 </div>
 
-<!-- Script Avanzado de Fechas de Entrega (Lunes, Miércoles, Viernes + 48h) -->
+<!-- Script Avanzado de Fechas de Entrega e Interactividad -->
 <script>
+// 1. Lógica para mostrar/ocultar el campo de dirección
+function evaluarMetodoEntrega() {
+    const selectorLugar = document.getElementById('lugar-entrega');
+    const contenedorDireccion = document.getElementById('contenedor-direccion');
+    
+    if (!selectorLugar || !contenedorDireccion) return;
+
+    if (selectorLugar.value.includes("Envío")) {
+        contenedorDireccion.classList.remove('hidden');
+    } else {
+        contenedorDireccion.classList.add('hidden');
+        const inputDireccion = document.getElementById('direccion-envio');
+        if (inputDireccion) inputDireccion.value = ""; 
+    }
+}
+
+// 2. Generación automática de fechas (Lunes, Miércoles, Viernes + 48h)
 document.addEventListener("DOMContentLoaded", function() {
     const select = document.getElementById("fecha-entrega");
     if (!select) return;
 
-    select.innerHTML = ""; // Limpiar opciones
+    select.innerHTML = ""; 
 
     const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
     const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
     const hoy = new Date();
-    
-    // 1. Aplicar la regla de las 48 horas mínimas de anticipación
+
     let fechaMinima = new Date(hoy);
     fechaMinima.setDate(hoy.getDate() + 2);
 
     let opcionesEncontradas = 0;
     let diasRevision = 0;
 
-    // 2. Buscaremos las próximas 3 fechas válidas de entrega (Lunes, Miércoles o Viernes)
-    // Ponemos un límite de 15 días de revisión para evitar bucles infinitos
     while (opcionesEncontradas < 3 && diasRevision < 15) {
         let fechaEvaluar = new Date(fechaMinima);
         fechaEvaluar.setDate(fechaMinima.getDate() + diasRevision);
 
-        let numeroDiaSemana = fechaEvaluar.getDay(); // 1 = Lunes, 3 = Miércoles, 5 = Viernes
+        let numeroDiaSemana = fechaEvaluar.getDay(); 
 
-        // Filtrar para que solo acepte Lunes (1), Miércoles (3) y Viernes (5)
         if (numeroDiaSemana === 1 || numeroDiaSemana === 3 || numeroDiaSemana === 5) {
             let diaNombre = diasSemana[numeroDiaSemana];
             let diaNum = fechaEvaluar.getDate();
@@ -248,7 +287,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             let textoFecha = `${diaNombre}, ${diaNum} de ${mesNombre} del ${anio}`;
 
-            // Crear la opción visual para el cliente
             let option = document.createElement("option");
             option.value = textoFecha;
             option.textContent = `Próxima Entrega: ${textoFecha}`;
