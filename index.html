@@ -200,7 +200,7 @@
         </div>
     </div>
 
-    <!-- Bloque de Selectores Interactivos y Dirección -->
+    <!-- Bloque de Selectores Interactivos y Ubicación -->
     <div class="mt-8 max-w-md mx-auto space-y-4 text-left">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <!-- Selector 1: Fecha de Entrega -->
@@ -227,35 +227,83 @@
             </div>
         </div>
 
-        <!-- Campo Dinámico: Dirección de Envío (Oculto por defecto) -->
-        <div id="contenedor-direccion" class="hidden transition-all duration-300">
-            <label for="direccion-envio" class="block text-sm font-bold text-gray-800 mb-2">
-                Dirección exacta de entrega:
+        <!-- Botón Dinámico: Compartir Ubicación GPS (Oculto por defecto) -->
+        <div id="contenedor-ubicacion" class="hidden transition-all duration-300">
+            <label class="block text-sm font-bold text-gray-800 mb-2">
+                Ubicación de entrega:
             </label>
-            <textarea id="direccion-envio" rows="2" placeholder="Ej: Urb. Villa Club, Etapa Aura, Mz 4 Vía 12. Junto a..." class="w-full bg-white border border-gray-300 rounded-xl py-3 px-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 text-gray-900 font-medium placeholder-gray-400 transition"></textarea>
+            <button type="button" onclick="obtenerUbicacionGPS()" id="btn-gps" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow transition flex items-center justify-center gap-2">
+                📍 <span>Compartir mi ubicación actual</span>
+            </button>
+            <!-- Input oculto para guardar temporalmente el enlace de mapas generado -->
+            <input type="hidden" id="enlace-mapa-input" value="">
         </div>
     </div>
 </div>
 
-<!-- Script Avanzado de Fechas de Entrega e Interactividad -->
+<!-- Script Avanzado de Fechas de Entrega, GPS e Interactividad -->
 <script>
-// 1. Lógica para mostrar/ocultar el campo de dirección
+// Variable global para guardar la URL de Google Maps temporalmente
+let urlGoogleMaps = "";
+
+// 1. Lógica para mostrar/ocultar el botón de ubicación
 function evaluarMetodoEntrega() {
     const selectorLugar = document.getElementById('lugar-entrega');
-    const contenedorDireccion = document.getElementById('contenedor-direccion');
+    const contenedorUbicacion = document.getElementById('contenedor-ubicacion');
     
-    if (!selectorLugar || !contenedorDireccion) return;
+    if (!selectorLugar || !contenedorUbicacion) return;
 
     if (selectorLugar.value.includes("Envío")) {
-        contenedorDireccion.classList.remove('hidden');
+        contenedorUbicacion.classList.remove('hidden');
     } else {
-        contenedorDireccion.classList.add('hidden');
-        const inputDireccion = document.getElementById('direccion-envio');
-        if (inputDireccion) inputDireccion.value = ""; 
+        contenedorUbicacion.classList.add('hidden');
+        // Resetear el botón e input si cambia a retiro
+        urlGoogleMaps = "";
+        document.getElementById('enlace-mapa-input').value = "";
+        const btn = document.getElementById('btn-gps');
+        btn.className = "w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow transition flex items-center justify-center gap-2";
+        btn.querySelector('span').innerText = "Compartir mi ubicación actual";
     }
 }
 
-// 2. Generación automática de fechas (Lunes, Miércoles, Viernes + 48h)
+// 2. Función nativa del navegador para obtener coordenadas GPS
+function obtenerUbicacionGPS() {
+    const btn = document.getElementById('btn-gps');
+    const spanText = btn.querySelector('span');
+    
+    if (!navigator.geolocation) {
+        alert("Tu navegador no soporta la geolocalización o GPS.");
+        return;
+    }
+
+    spanText.innerText = "Obteniendo coordenadas...";
+    btn.classList.replace('bg-blue-600', 'bg-gray-500');
+
+    navigator.geolocation.getCurrentPosition(
+        function(posicion) {
+            const lat = posicion.coords.latitude;
+            const lon = posicion.coords.longitude;
+            // Generar enlace limpio de Google Maps
+            urlGoogleMaps = `https://google.com{lat},${lon}`;
+            document.getElementById('enlace-mapa-input').value = urlGoogleMaps;
+            
+            // Cambiar diseño del botón a Éxito (Verde)
+            spanText.innerText = "¡Ubicación guardada con éxito! ✓";
+            btn.className = "w-full bg-green-600 text-white font-bold py-3 px-4 rounded-xl shadow flex items-center justify-center gap-2 pointer-events-none";
+        },
+        function(error) {
+            // Manejo de errores comunes (ej: si el cliente niega el permiso)
+            alert("No pudimos acceder a tu GPS. Por favor, asegúrate de dar permisos de ubicación a la página web.");
+            spanText.innerText = "Intentar de nuevo";
+            btn.className = "w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-xl shadow transition flex items-center justify-center gap-2";
+            urlGoogleMaps = "";
+            document.getElementById('enlace-mapa-input').value = "";
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 } // Solicitar alta precisión del GPS
+    );
+}
+
+// 3. Generación automática de fechas (Lunes, Miércoles, Viernes + 48h)
 document.addEventListener("DOMContentLoaded", function() {
     const select = document.getElementById("fecha-entrega");
     if (!select) return;
