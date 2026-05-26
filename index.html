@@ -181,7 +181,7 @@
     
     </div>
 
-    <!-- Sección de Productos -->
+<!-- Sección de Productos -->
 <div class="max-w-7xl mx-auto px-4 pt-16 pb-8 text-center">
     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">Nuestros Productos</h2>
     <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
@@ -192,7 +192,7 @@
     <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto text-sm text-gray-700">
         <div class="p-4 bg-amber-50 rounded-xl border border-amber-100 shadow-sm">
             <span class="font-bold text-amber-900 block mb-1">⏱️ Tiempo de Preparación</span>
-            Los pedidos se entregan 48 horas después de tu compra.
+            Pedidos con 48 horas de anticipación.<br>Entregas solo los días: Lunes, Miércoles y Viernes.
         </div>
         <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 shadow-sm">
             <span class="font-bold text-gray-900 block mb-1">📍 Puntos de Entrega</span>
@@ -206,49 +206,57 @@
             Selecciona tu fecha de entrega preferida:
         </label>
         <select id="fecha-entrega" class="w-full bg-white border border-gray-300 rounded-xl py-3 px-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-gray-900 font-medium cursor-pointer transition">
-            <!-- Las opciones se generarán automáticamente aquí -->
+            <!-- Las opciones válidas se generarán automáticamente aquí -->
         </select>
     </div>
 </div>
 
-<!-- Script para calcular las fechas automáticas de entrega -->
+<!-- Script Avanzado de Fechas de Entrega (Lunes, Miércoles, Viernes + 48h) -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const select = document.getElementById("fecha-entrega");
     if (!select) return;
 
-    // Limpiar opciones previas
-    select.innerHTML = "";
+    select.innerHTML = ""; // Limpiar opciones
 
-    // Días de la semana en español
     const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
     const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
-    // Fecha actual
-    let hoy = new Date();
+    const hoy = new Date();
     
-    // Regla de 48 horas: sumamos 2 días completos para la primera entrega disponible
-    let fechaInicio = new Date(hoy);
-    fechaInicio.setDate(hoy.getDate() + 2);
+    // 1. Aplicar la regla de las 48 horas mínimas de anticipación
+    let fechaMinima = new Date(hoy);
+    fechaMinima.setDate(hoy.getDate() + 2);
 
-    // Generamos las siguientes 3 fechas disponibles para que el cliente elija
-    for (let i = 0; i < 3; i++) {
-        let fechaEntrega = new Date(fechaInicio);
-        fechaEntrega.setDate(fechaInicio.getDate() + i);
+    let opcionesEncontradas = 0;
+    let diasRevision = 0;
 
-        // Formatear texto (Ejemplo: "Viernes, 29 de mayo")
-        let diaNombre = diasSemana[fechaEntrega.getDay()];
-        let diaNum = fechaEntrega.getDate();
-        let mesNombre = meses[fechaEntrega.getMonth()];
-        let anio = fechaEntrega.getFullYear();
+    // 2. Buscaremos las próximas 3 fechas válidas de entrega (Lunes, Miércoles o Viernes)
+    // Ponemos un límite de 15 días de revisión para evitar bucles infinitos
+    while (opcionesEncontradas < 3 && diasRevision < 15) {
+        let fechaEvaluar = new Date(fechaMinima);
+        fechaEvaluar.setDate(fechaMinima.getDate() + diasRevision);
 
-        let textoFecha = `${diaNombre}, ${diaNum} de ${mesNombre} del ${anio}`;
+        let numeroDiaSemana = fechaEvaluar.getDay(); // 1 = Lunes, 3 = Miércoles, 5 = Viernes
 
-        // Crear la opción en el select
-        let option = document.createElement("option");
-        option.value = textoFecha;
-        option.textContent = `Próxima Entrega: ${textoFecha}`;
-        select.appendChild(option);
+        // Filtrar para que solo acepte Lunes (1), Miércoles (3) y Viernes (5)
+        if (numeroDiaSemana === 1 || numeroDiaSemana === 3 || numeroDiaSemana === 5) {
+            let diaNombre = diasSemana[numeroDiaSemana];
+            let diaNum = fechaEvaluar.getDate();
+            let mesNombre = meses[fechaEvaluar.getMonth()];
+            let anio = fechaEvaluar.getFullYear();
+
+            let textoFecha = `${diaNombre}, ${diaNum} de ${mesNombre} del ${anio}`;
+
+            // Crear la opción visual para el cliente
+            let option = document.createElement("option");
+            option.value = textoFecha;
+            option.textContent = `Próxima Entrega: ${textoFecha}`;
+            select.appendChild(option);
+
+            opcionesEncontradas++;
+        }
+        diasRevision++;
     }
 });
 </script>
