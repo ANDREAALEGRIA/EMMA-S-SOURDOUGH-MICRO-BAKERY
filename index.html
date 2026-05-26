@@ -983,14 +983,13 @@ function enviarPedidoWhatsApp() {
 
     mensaje += `\n*Total a realizar: $${totalFinal.toFixed(2)}*`; 
 
-    // 4. Formato de enlace de WhatsApp
-    const numero = "593998272773"; 
-    const url = "https://wa.me" + numero + "?text=" + encodeURIComponent(mensaje); 
-
-    // 5. Redirección directa sin pestañas nuevas
-    window.location.href = url; 
+    // 4. EL FORMATO QUE INDICASTE: wa.me/numero
+    const numero = "593998272773";
+    const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
+    
+    // 5. REDIRECCIÓN DIRECTA (Sin abrir pestañas nuevas para evitar bloqueos)
+    window.location.href = url;
 }
-
 
 // 8. CARRITO UI, CIERRE Y ARRANQUE
 function actualizarCarritoUI() {
