@@ -182,16 +182,24 @@
     </div>
 
     <!-- Sección de Productos -->
-    <!-- Encabezado de la sección de Productos -->
-    <div class="max-w-7xl mx-auto px-4 pt-16 pb-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Nuestros Productos</h2>
-        <p class="mt-4 text-gray-600">Horneados en lotes pequeños con fermentación natural para garantizar su frescura.</p>
-		<p class="mt-4 text-gray-600 font-bold">Días de toma de pedidos: Lunes, Miércoles, Viernes y Sábados.</p>
-		<p class="mt-4 text-gray-600 font-bold">Días de entrega: Lunes, Miércoles y Viernes.</p>
-		<p class="mt-4 text-gray-600 font-bold">2 Puntos de Entregas: *Base Naval Sur - Guayaquil  -  * Urb. Mallorca Village - La Aurora.</p>
-		<p class="mt-4 text-gray-600 font-bold">Próxima Entrega: Viernes 22 de mayo del 2026.</p>
-		<p class="mt-4 text-gray-600 font-bold">Próxima Entrega: Martes, 26 de mayo del 2026.</p>
+<div class="max-w-7xl mx-auto px-4 pt-16 pb-8 text-center"> 
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Nuestros Productos</h2> 
+    <p class="mt-4 text-gray-600">Horneados en lotes pequeños con fermentación natural para garantizar su frescura.</p> 
+    <p class="mt-4 text-gray-600 font-bold">Realiza tus pedidos los dias Lunes, Miércoles, Viernes y Sábados.</p> 
+    <p class="mt-4 text-gray-600 font-bold">Los pedidos serán entregados después de 48 horas los días Lunes, Miércoles y Viernes.</p> 
+    <p class="mt-4 text-gray-600 font-bold">2 Puntos de Entregas: *Base Naval Sur - Guayaquil - * Urb. Mallorca Village - La Aurora.</p> 
+    
+    <!-- Selector de Fecha de Entrega Interactivo -->
+    <div class="mt-6 max-w-xs mx-auto text-left">
+        <label for="fecha-entrega" class="block text-sm font-bold text-gray-700 mb-2 text-center">
+            Selecciona tu fecha de entrega preferida:
+        </label>
+        <select id="fecha-entrega" class="w-full bg-white border border-gray-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-gray-900 font-medium">
+            <option value="Viernes 29 de mayo del 2026">Próxima Entrega: Viernes 29 de mayo del 2026</option>
+            <option value="Lunes 01 de junio del 2026">Próxima Entrega: Lunes, 01 de junio del 2026</option>
+        </select>
     </div>
+</div>
 	
 <!-- AQUÍ PEGAS EL PUNTO 1 (Los filtros) -->
 <div class="max-w-7xl mx-auto px-4 mb-12">
