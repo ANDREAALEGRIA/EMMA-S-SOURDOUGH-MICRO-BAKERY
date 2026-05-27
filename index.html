@@ -917,78 +917,80 @@ function filtrar(cat, evento) {
 }
 
 function enviarPedidoWhatsApp() { 
-    // 1. Verificamos si hay panes 
-    if (!carrito || carrito.length === 0) { 
-        alert("Tu bolsa está vacía"); 
-        return; 
-    } 
-
-    // Capturamos los datos de los selectores de entrega
-    const selectorFecha = document.getElementById('fecha-entrega');
-    const selectorLugar = document.getElementById('lugar-entrega');
-    const enlaceMapaHidden = document.getElementById('enlace-mapa-input') ? document.getElementById('enlace-mapa-input').value : "";
-    
-    if (!selectorFecha || !selectorLugar) {
-        alert("Error en el sistema de selección de entrega.");
-        return;
-    }
-    
-    const fechaSeleccionada = selectorFecha.value;
-    const lugarSeleccionado = selectorLugar.value;
-    
-    // Validación obligatoria: Si es Envío a casa, debe registrar el GPS
-    if (lugarSeleccionado.includes("Envío") && enlaceMapaHidden === "") {
-        alert("Por favor, haz clic en el botón azul para registrar tu ubicación GPS antes de enviar el pedido.");
-        return;
-    }
-
-    // Capturamos el costo de envío del atributo data-costo
-    const costoEnvio = parseFloat(selectorLugar.options[selectorLugar.selectedIndex].getAttribute('data-costo')) || 0;
-
-    // 2. Agrupamos los panes y calculamos el total internamente 
-    const agrupados = carrito.reduce((acc, p) => { 
-        if (!acc[p.titulo]) { 
-            acc[p.titulo] = { cantidad: 0, precio: p.precio }; 
-        } 
-        acc[p.titulo].cantidad++; 
-        return acc; 
-    }, {}); 
-
-    // 3. Construimos el mensaje 
-    let mensaje = "¡Hola Andrea! Me gustaría hacer el siguiente pedido:\n\n"; 
-    let subtotalProductos = 0; 
-
-    for (const [nombre, datos] of Object.entries(agrupados)) { 
-        const subtotal = datos.cantidad * datos.precio; 
-        subtotalProductos += subtotal; 
-        mensaje += `🥖 *${datos.cantidad}x* ${nombre} ($${subtotal.toFixed(2)})\n`; 
-    } 
-
-    // Calculamos el total final sumando el envío
-    const totalFinal = subtotalProductos + costoEnvio;
-
-    // [OPTIMIZADO] Añadimos los datos de logística claros al mensaje
-    mensaje += `\n📅 *Fecha de entrega:* ${fechaSeleccionada}\n`;
-    
-    // Si el texto del selector incluye "Envío", cambia el formato del mensaje
-    if (lugarSeleccionado.includes("Envío")) {
-        mensaje += `🏠 *Tipo de Entrega:* Envío a domicilio\n`;
-        mensaje += `📍 *Sector:* ${lugarSeleccionado}\n`;
-        mensaje += `🗺️ *Ubicación GPS:* ${enlaceMapaHidden}\n`;
-    } else {
-        // Si el cliente recoge el pedido en un punto físico
-        mensaje += `🏪 *Tipo de Entrega:* Retiro en Punto Físico\n`;
-        mensaje += `📍 *Lugar de Retiro:* ${lugarSeleccionado}\n`;
-    }
-
-    mensaje += `\n*Total a realizar: $${totalFinal.toFixed(2)}*`; 
-
-    // 4. EL FORMATO QUE INDICASTE: wa.me/numero
-    const numero = "593998272773";
-    const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
-    
-    // 5. REDIRECCIÓN DIRECTA (Sin abrir pestañas nuevas para evitar bloqueos)
-    window.location.href = url;
+ // 1. Verificamos si hay panes 
+ if (!carrito || carrito.length === 0) { 
+   alert("Tu bolsa está vacía"); 
+   return; 
+ } 
+ 
+ // Capturamos los datos de los selectores de entrega
+ const selectorFecha = document.getElementById('fecha-entrega');
+ const selectorLugar = document.getElementById('lugar-entrega');
+ 
+ // CORRECCIÓN AQUÍ: Leemos directamente el valor global de la variable de manera directa y segura
+ const enlaceMapaHidden = urlGoogleMaps || (document.getElementById('enlace-mapa-input') ? document.getElementById('enlace-mapa-input').value : "");
+ 
+ if (!selectorFecha || !selectorLugar) {
+   alert("Error en el sistema de selección de entrega.");
+   return;
+ }
+ 
+ const fechaSeleccionada = selectorFecha.value;
+ const lugarSeleccionado = selectorLugar.value;
+ 
+ // Validación obligatoria: Si es Envío a casa, debe registrar el GPS
+ if (lugarSeleccionado.includes("Envío") && (!enlaceMapaHidden || enlaceMapaHidden.trim() === "")) {
+   alert("Por favor, haz clic en el botón azul para registrar tu ubicación GPS antes de enviar el pedido.");
+   return;
+ }
+ 
+ // Capturamos el costo de envío del atributo data-costo
+ const costoEnvio = parseFloat(selectorLugar.options[selectorLugar.selectedIndex].getAttribute('data-costo')) || 0;
+ 
+ // 2. Agrupamos los panes y calculamos el total internamente 
+ const agrupados = carrito.reduce((acc, p) => { 
+   if (!acc[p.titulo]) { 
+     acc[p.titulo] = { cantidad: 0, precio: p.precio }; 
+   } 
+   acc[p.titulo].cantidad++; 
+   return acc; 
+ }, {}); 
+ 
+ // 3. Construimos el mensaje 
+ let mensaje = "¡Hola Andrea! Me gustaría hacer el siguiente pedido:\n\n"; 
+ let subtotalProductos = 0; 
+ 
+ for (const [nombre, datos] of Object.entries(agrupados)) { 
+   const subtotal = datos.cantidad * datos.precio; 
+   subtotalProductos += subtotal; 
+   mensaje += ` *${datos.cantidad}x* ${nombre} ($${subtotal.toFixed(2)})\n`; 
+ } 
+ 
+ // Calculamos el total final sumando el envío
+ const totalFinal = subtotalProductos + costoEnvio;
+ 
+ // Añadimos los datos de logística claros al mensaje
+ mensaje += `\n *Fecha de entrega:* ${fechaSeleccionada}\n`;
+ 
+ // Si el texto del selector incluye "Envío", cambia el formato del mensaje
+ if (lugarSeleccionado.includes("Envío")) {
+   mensaje += ` *Tipo de Entrega:* Envío a domicilio\n`;
+   mensaje += ` *Sector:* ${lugarSeleccionado}\n`;
+   mensaje += ` *Ubicación GPS:* ${enlaceMapaHidden}\n`; // Aquí se inyectará el link limpio de maps
+ } else {
+   // Si el cliente recoge el pedido en un punto físico
+   mensaje += ` *Tipo de Entrega:* Retiro en Punto Físico\n`;
+   mensaje += ` *Lugar de Retiro:* ${lugarSeleccionado}\n`;
+ }
+ 
+ mensaje += `\n*Total a realizar: $${totalFinal.toFixed(2)}*`; 
+ 
+ // 4. EL FORMATO: wa.me/numero
+ const numero = "593998272773";
+ const url = "https://wa.me" + numero + "?text=" + encodeURIComponent(mensaje);
+ 
+ // 5. REDIRECCIÓN DIRECTA
+ window.location.href = url;
 }
 
 // 8. CARRITO UI, CIERRE Y ARRANQUE
