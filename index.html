@@ -1107,7 +1107,59 @@ inputsBusqueda.forEach(id => {
   </svg>
 </button>
 
-		<div style="font-family: Arial, sans-serif; color: #333333; line-height: 1.6; max-width: 500px;">
+		
+Conversación con Gemini
+quiero hacer un mensaje de contestacion cuando reciba el pedido de los pancitos de alguien
+
+¡Qué buena vibra! Responder de forma amable, clara y organizada no solo confirma el pedido, sino que deja al cliente con antojo y confianza.
+
+Aquí tienes un par de opciones que puedes adaptar según el estilo de tu negocio. Solo debes rellenar los datos entre corchetes [ ].
+
+Opción 1: Cálida y amigable (Ideal para WhatsApp)
+"¡Hola, [Nombre del cliente]! Qué alegría saludarte. 🥖✨
+
+Hemos recibido tu pedido de pancitos. ¡Muchas gracias por elegirnos! Aquí tienes el resumen para confirmar que todo esté correcto:
+
+Pedido: [Ej: 1 docena de pancitos de queso + 6 de dulce]
+
+Total a pagar: [Monto $]
+
+Método de pago: [Ej: Transferencia / Efectivo]
+
+Fecha/Hora de entrega o retiro: [Día] entre las [Hora] y [Hora]
+
+📌 Nota: Si es por transferencia, por favor envíanos el comprobante por este medio para agendarlo definitivamente.
+
+¡Ya estamos precalentando el horno para que te lleguen calentitos y deliciosos! Si necesitas cambiar algo, avísanos pronto."
+
+Opción 2: Corta y directa al grano (Estilo más comercial)
+"¡Hola! Confirmamos la recepción de tu pedido. 🥐
+
+Detalle: [Cantidad y tipo de pan]
+
+Valor total: [Monto $]
+
+Dirección de entrega (si aplica): [Dirección]
+
+Día de entrega: [Fecha]
+
+Para dejarlo programado, por favor confímanos tu forma de pago. ¡Gracias por tu compra, que tengas un excelente día!"
+
+💡 Un par de tips extra:
+Usa emojis: Los emojis de comida (🍞, 🥐, 🥖, ✨) hacen que el mensaje se sienta más fresco y cercano.
+
+Fija las reglas: Si trabajas bajo agenda previa (por ejemplo, pedidos con 24 horas de anticipación), puedes agregar una pequeña línea al final que diga: Recuerda que horneamos bajo pedido para garantizar la frescura.
+
+¿Cuál de estos dos estilos va más con la personalidad de tu marca?
+
+me gusta la opcion 2. quiero el codigo html
+
+¡Excelente elección! La opción directa es perfecta para mantener todo claro y profesional.
+
+Aquí tienes el código HTML listo para usar. Está estructurado de forma limpia utilizando etiquetas básicas, ideal si planeas usarlo en un correo electrónico, una plantilla de chat o un sistema de gestión.
+
+HTML
+<div style="font-family: Arial, sans-serif; color: #333333; line-height: 1.6; max-width: 500px;">
     
     <p>¡Hola! Confirmamos la recepción de tu pedido. 🥐</p>
     
@@ -1122,6 +1174,351 @@ inputsBusqueda.forEach(id => {
     
     <p style="margin-top: 20px;">¡Gracias por tu compra, que tengas un excelente día!</p>
 
+</div>
+🛠️ Detalles del código:
+font-family y color: Añadí estilos en línea básicos (Arial) para asegurarte de que el texto se vea moderno y legible en cualquier pantalla.
+
+<strong>: Resalta los puntos clave (Detalle, Valor total, etc.) para que el cliente los identifique de un solo vistazo.
+
+Espaciados: Los margin-bottom en la lista evitan que el texto se vea amontonado.
+
+donde pongo este codigo?
+
+Dónde poner el código depende completamente de cómo y dónde te comunicas con tus clientes. Como es código HTML, no se pega directamente en un chat normal (como WhatsApp o Instagram común) porque se vería el texto con las etiquetas.
+
+Aquí tienes los tres lugares más comunes donde puedes usarlo:
+
+1. En una plataforma de Email Marketing (Si envías correos automáticos)
+Si usas herramientas como Mailchimp, Sender, Brevo, o la plataforma de tu tienda online (Shopify, WooCommerce, Tiendanube):
+
+Ve a la sección de Plantillas de Correo o Correos Automatizados.
+
+Busca la opción de "Editar Código", "Texto HTML" o un bloque que se llame "Cincel/Código/Custom HTML".
+
+Pega el código ahí y la plataforma lo transformará automáticamente en el texto formateado con sus viñetas.
+
+2. En Gmail u Outlook (Para guardarlo como plantilla)
+Si respondes los pedidos manualmente desde tu correo:
+
+El truco fácil: No pegues el código directamente en el correo. Primero, copia el código que te di, entra a una página como htmlanywhere.com o cualquier "HTML Previewer" en Google, pega el código ahí para ver cómo queda visualmente, copia el texto ya diseñado y pégalo en tu firma de Gmail o guárdalo como "Plantilla de correo".
+
+3. Si tu intención era usarlo en WhatsApp o Instagram
+⚠️ Importante: Si lo que querías era enviar este mensaje por WhatsApp, el código HTML no te servirá, ya que WhatsApp no lo lee y tu cliente vería las etiquetas como <div> y <p>.
+
+Si este es tu caso, lo que necesitas es el formato de texto plano con los códigos de WhatsApp. Solo debes copiar y pegar esto:
+
+Plaintext
+¡Hola! Confirmamos la recepción de tu pedido. 🥐
+
+* *Detalle:* [Cantidad y tipo de pan]
+* *Valor total:* [Monto $]
+* *Dirección de entrega (si aplica):* [Dirección]
+* *Día de entrega:* [Fecha]
+
+Para dejarlo programado, por favor confímanos tu forma de pago. ¡Gracias por tu compra, que tengas un excelente día!
+¿En qué aplicación o plataforma tienes pensado responderle a tus clientes? Así te puedo guiar exactamente paso a paso.
+
+en mi codigo html
+
+Si vas a integrar este mensaje directamente dentro del código HTML de tu propia página web, sistema de gestión o plataforma de facturación, el lugar exacto dependerá de cómo esté estructurada tu aplicación.
+
+Aquí tienes las tres formas más comunes de implementarlo:
+
+1. En el archivo de la plantilla (Template) de tu correo
+Si estás modificando el archivo HTML que tu servidor envía automáticamente por correo cuando alguien hace un pedido:
+
+Busca la sección del <body> de tu plantilla.
+
+Pega el bloque de código dentro del contenedor principal donde se muestra el contenido del mensaje.
+
+2. Guardado en una variable de tu backend (Node.js, PHP, Python, etc.)
+Si envías los correos de forma dinámica desde tu servidor, normalmente guardarás el HTML dentro de una variable de texto (String) reemplazando los datos fijos por variables de tu base de datos:
+
+Ejemplo en PHP:
+
+PHP
+$mensajeHTML = '
+<div style="font-family: Arial, sans-serif; color: #333333; line-height: 1.6; max-width: 500px;">
+    <p>¡Hola! Confirmamos la recepción de tu pedido. 🥐</p>
+    <ul style="list-style-type: disc; margin-left: 20px; padding-left: 0;">
+        <li style="margin-bottom: 8px;"><strong>Detalle:</strong> ' . $pedido_detalle . '</li>
+        <li style="margin-bottom: 8px;"><strong>Valor total:</strong> ' . $pedido_total . '</li>
+        <li style="margin-bottom: 8px;"><strong>Dirección de entrega (si aplica):</strong> ' . $pedido_direccion . '</li>
+        <li style="margin-bottom: 8px;"><strong>Día de entrega:</strong> ' . $pedido_fecha . '</li>
+    </ul>
+    <p>Para dejarlo programado, por favor confímanos tu forma de pago.</p>
+    <p style="margin-top: 20px;">¡Gracias por tu compra, que tengas un excelente día!</p>
+</div>';
+
+### 3. En una sección de "Confirmación" en tu página web (Thank You Page)
+Si quieres que este mensaje aparezca en la pantalla del cliente inmediatamente después de que presione el botón "Comprar" o "Hacer pedido":
+* Abre el archivo `.html` o el componente (React, Vue, etc.) de la página de confirmación.
+* Pega el código dentro de la etiqueta principal de contenido (por ejemplo, dentro de un `<main>` o un `<section>`).
+
+---
+
+¿Tu código está hecho en algún lenguaje en específico (como PHP, Python, JavaScript) o estás usando algún sistema/CMS como WordPress? Cuéntame y te paso la estructura exacta que necesitas.
+le puse el codigo pero no tiene la respuesta.
+
+¡Ah, entiendo perfectamente! Claro, el código HTML por sí solo es como un esqueleto; es solo el diseño visual. No tiene "vida" ni sabe de dónde sacar la información de los pancitos, el precio o el nombre del cliente.
+
+Para que el mensaje muestre la respuesta con los datos reales de cada pedido, necesitas conectar el HTML con el lenguaje de programación que maneja tu página o sistema (el backend).
+
+Como no sé exactamente qué lenguaje estás usando, aquí te muestro cómo se hace en los tres casos más comunes. El truco está en cambiar los corchetes [...] por las variables de tu código:
+
+Opción A: Si usas JavaScript (Node.js, React o Vanilla JS)
+En JavaScript usamos "backticks" (``) y ${} para meter las variables directamente adentro del texto HTML:
+
+JavaScript
+// Estas serían las variables que ya vienen del formulario de tu cliente
+const detallePedido = "1 docena de pancitos de queso";
+const total = "$12.50";
+const direccion = "Av. Principal 123";
+const fecha = "Mañana por la mañana";
+
+// Así metes las variables dentro del HTML
+const mensajeHTML = `
+<div style="font-family: Arial, sans-serif; color: #333333; line-height: 1.6; max-width: 500px;">
+    <p>¡Hola! Confirmamos la recepción de tu pedido. 🥐</p>
+    <ul style="list-style-type: disc; margin-left: 20px; padding-left: 0;">
+        <li style="margin-bottom: 8px;"><strong>Detalle:</strong> ${detallePedido}</li>
+        <li style="margin-bottom: 8px;"><strong>Valor total:</strong> ${total}</li>
+        <li style="margin-bottom: 8px;"><strong>Dirección de entrega (si aplica):</strong> ${direccion}</li>
+        <li style="margin-bottom: 8px;"><strong>Día de entrega:</strong> ${fecha}</li>
+    </ul>
+    <p>Para dejarlo programado, por favor confímanos tu forma de pago.</p>
+    <p style="margin-top: 20px;">¡Gracias por tu compra, que tengas un excelente día!</p>
+</div>
+`;
+Opción B: Si usas PHP
+En PHP usamos el punto (.) para unir el texto HTML con tus variables:
+
+PHP
+<?php
+// Tus variables del pedido
+$detallePedido = "6 pancitos integrales";
+$total = "$6.00";
+$direccion = "Calle Falsa 123";
+$fecha = "Sábado 15 de Octubre";
+
+// El código HTML con las respuestas automáticas
+echo '
+<div style="font-family: Arial, sans-serif; color: #333333; line-height: 1.6; max-width: 500px;">
+    <p>¡Hola! Confirmamos la recepción de tu pedido. 🥐</p>
+    <ul style="list-style-type: disc; margin-left: 20px; padding-left: 0;">
+        <li style="margin-bottom: 8px;"><strong>Detalle:</strong> ' . $detallePedido . '</li>
+        <li style="margin-bottom: 8px;"><strong>Valor total:</strong> ' . $total . '</li>
+        <li style="margin-bottom: 8px;"><strong>Dirección de entrega (si aplica):</strong> ' . $direccion . '</li>
+        <li style="margin-bottom: 8px;"><strong>Día de entrega:</strong> ' . $fecha . '</li>
+    </ul>
+    <p>Para dejarlo programado, por favor confímanos tu forma de pago.</p>
+    <p style="margin-top: 20px;">¡Gracias por tu compra, que tengas un excelente día!</p>
+</div>';
+?>
+Opción C: Si usas Python (Flask / Django con Jinja2)
+Si estás renderizando una plantilla HTML desde Python, cambias los datos por llaves dobles {{ }}:
+
+HTML
+<div style="font-family: Arial, sans-serif; color: #333333; line-height: 1.6; max-width: 500px;">
+    <p>¡Hola! Confirmamos la recepción de tu pedido. 🥐</p>
+    <ul style="list-style-type: disc; margin-left: 20px; padding-left: 0;">
+        <li style="margin-bottom: 8px;"><strong>Detalle:</strong> {{ detalle_pedido }}</li>
+        <li style="margin-bottom: 8px;"><strong>Valor total:</strong> {{ total }}</li>
+        <li style="margin-bottom: 8px;"><strong>Dirección de entrega (si aplica):</strong> {{ direccion }}</li>
+        <li style="margin-bottom: 8px;"><strong>Día de entrega:</strong> {{ fecha }}</li>
+    </ul>
+    <p>Para dejarlo programado, por favor confímanos tu forma de pago.</p>
+    <p style="margin-top: 20px;">¡Gracias por tu compra, que tengas un excelente día!</p>
+</div>
+¿En qué lenguaje de programación está hecho tu código o qué tecnología estás usando para crear tu página? Si me compartes esa parte, te ayudo a escribirlo exactamente como lo necesitas.
+
+esto usa mi codigo .. un ejemplo    <!-- Bloque Derecho: Enlaces + Carrito -->
+
+            <div class="flex items-center gap-4 md:gap-8">
+
+                
+
+                 <!-- Menú Escritorio (Con Buscador Interactivo) -->
+
+<div class="hidden md:flex items-center space-x-6">
+
+    <!-- Enlaces de Navegación -->
+
+    <div class="flex space-x-4">
+
+        <a href="#" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Inicio</a>
+
+        <a href="#productos" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Productos</a>
+
+        <a href="#contacto" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Contacto</a>
+
+    </div>
+
+
+
+    <!-- Buscador Interactivo -->
+
+    <div class="relative group">
+
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+
+            <svg class="w-4 h-4 text-gray-400 group-focus-within:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+
+            </svg>
+
+        </span>
+
+        <input
+
+            id="buscador-input"
+
+            type="text" 
+
+            placeholder="Buscar pan..." 
+
+            class="block w-48 pl-10 pr-3 py-1.5 border border-gray-200 rounded-full text-sm placeholder-gray-400
+
+                   focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 
+
+                   transition-all duration-300 focus:w-64 bg-gray-50/50"
+
+        >
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+                <!-- Bloque de botones (Carrito + Hamburguesa) -->
+
+<div class="flex items-center gap-2 md:gap-8">
+
+    
+
+    <!-- Botón Carrito (Visible en móvil y PC) -->
+
+    <button onclick="toggleCarrito()" class="relative p-2 text-gray-600 hover:text-amber-700 transition-colors">
+
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+
+        </svg>
+
+        <span class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-amber-600 rounded-full">0</span>
+
+    </button>
+
+
+
+                <!-- Botón Hamburguesa Corregido -->
+
+<button id="mobile-menu-button" class="text-gray-600 hover:text-amber-700 p-2 focus:outline-none flex items-center justify-center">
+
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+
+    </svg>
+
+</button>
+
+    </div>
+
+
+
+<!-- Menú Desplegable Móvil -->
+
+<div id="mobile-menu" class="hidden bg-white border-t border-gray-100 shadow-xl absolute top-full left-0 w-full z-50 p-4">
+
+    <!-- Buscador para Móvil -->
+
+    <div class="relative mb-4">
+
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+
+            </svg>
+
+        </span>
+
+        <input 
+
+            id="buscador-input-movil"
+
+type="text" 
+
+            placeholder="Buscar pan..." 
+
+            class="buscador-compartido block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-amber-500 bg-gray-50"
+
+        >
+
+    </div>
+
+
+
+    <!-- Enlaces -->
+
+    <a href="#" onclick="toggleMenu()" class="block px-6 py-3 text-gray-600 hover:bg-amber-50 font-bold border-b border-gray-50">Inicio</a>
+
+    <a href="#productos" onclick="toggleMenu()" class="block px-6 py-3 text-gray-600 hover:bg-amber-50 font-bold border-b border-gray-50">Productos</a>
+
+    <a href="#contacto" onclick="toggleMenu()" class="block px-6 py-3 text-gray-600 hover:bg-amber-50 font-bold">Contacto</a>
+
+</div>
+
+¡Ah, qué golazo! Ya veo perfectamente qué estás armando. Estás usando Tailwind CSS puro para los estilos (por clases como flex, bg-amber-600, hover:text-amber-700), y por lo que noto en los atributos onclick="toggleCarrito()" y onclick="toggleMenu()", todo tu sistema funciona con JavaScript clásico (Vanilla JS) directo en el navegador.
+
+Como tu página tiene un Carrito, lo ideal no es congelar el mensaje en el HTML estático, sino crear una ventana emergente (un Modal) o una sección que aparezca mágicamente con los datos reales cuando el cliente finalice su compra. Además, para que combine perfectamente con la estética de tu web de pancitos, adapté el diseño usando exactamente tus mismos colores ámbar (amber) y estilos redondeados (rounded-2xl).
+
+Aquí tienes la solución completa de cómo integrarlo en tu código:
+
+Paso 1: Pega el diseño del mensaje (en tu HTML)
+Vas a colocar este bloque de código al final de tu archivo HTML, justo antes de cerrar la etiqueta </body>. Por defecto estará oculto (hidden) y se activará solo cuando se procese un pedido.
+
+HTML
+<div id="modal-confirmacion" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-gray-100 transform transition-all">
+        
+        <div class="flex items-center gap-3 mb-4">
+            <div class="bg-amber-100 p-2 rounded-full text-amber-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-800">¡Pedido Recibido! 🥐</h3>
+        </div>
+
+        <p class="text-gray-600 text-sm mb-4">¡Hola! Confirmamos la recepción de tu pedido con los siguientes detalles:</p>
+        
+        <div class="bg-amber-50/50 border border-amber-100 rounded-xl p-4 mb-4 text-sm text-gray-700 space-y-2">
+            <p><strong>Detalle:</strong> <span id="resumen-productos" class="text-gray-600">--</span></p>
+            <p><strong>Valor total:</strong> <span id="resumen-total" class="font-bold text-amber-700">$0.00</span></p>
+            <p><strong>Dirección de entrega:</strong> <span id="resumen-direccion" class="text-gray-600">Por definir</span></p>
+            <p><strong>Día de entrega:</strong> <span id="resumen-fecha" class="text-gray-600">Mañana en la mañana</span></p>
+        </div>
+        
+        <p class="text-sm text-gray-600 mb-6">Para dejarlo programado en el horno, por favor confímanos tu forma de pago.</p>
+        
+        <div class="flex flex-col gap-2">
+            <button onclick="enviarAWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-2 text-sm shadow-md shadow-emerald-600/10">
+                Enviar comprobante por WhatsApp
+            </button>
+            <button onclick="cerrarConfirmacion()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium py-2 px-4 rounded-xl transition text-sm text-center">
+                Cerrar
+            </button>
+        </div>
+
+    </div>
 </div>
 </body>
 
