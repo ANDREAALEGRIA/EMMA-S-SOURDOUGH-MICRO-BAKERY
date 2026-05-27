@@ -973,11 +973,15 @@ function enviarPedidoWhatsApp() {
  mensaje += `\n *Fecha de entrega:* ${fechaSeleccionada}\n`;
  
  // Si el texto del selector incluye "Envío", cambia el formato del mensaje
- if (lugarSeleccionado.includes("Envío")) {
-   mensaje += ` *Tipo de Entrega:* Envío a domicilio\n`;
-   mensaje += ` *Sector:* ${lugarSeleccionado}\n`;
-   mensaje += ` *Ubicación GPS:* ${enlaceMapaHidden}\n`; // Aquí se inyectará el link limpio de maps
- } else {
+if (lugarSeleccionado.includes("Envío")) {
+  mensaje += ` *Tipo de Entrega:* Envío a domicilio\n`;
+  mensaje += ` *Sector:* ${lugarSeleccionado}\n`;
+  
+  // CORRECCIÓN AQUÍ: Extraemos el enlace de forma directa y segura con .trim()
+  const linkLimpio = (urlGoogleMaps || document.getElementById('enlace-mapa-input').value).trim();
+  mensaje += " *Ubicación GPS:* " + linkLimpio + "\n";
+} else {
+	
    // Si el cliente recoge el pedido en un punto físico
    mensaje += ` *Tipo de Entrega:* Retiro en Punto Físico\n`;
    mensaje += ` *Lugar de Retiro:* ${lugarSeleccionado}\n`;
