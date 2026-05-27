@@ -1097,6 +1097,43 @@ inputsBusqueda.forEach(id => {
     });
 });
 
+
+// Función para mostrar la confirmación con los datos reales del carrito
+function mostrarConfirmacionPedido(detalle, total, direccion, fecha) {
+    // 1. Metemos las respuestas reales en el HTML
+    document.getElementById('resumen-productos').innerText = detalle;
+    document.getElementById('resumen-total').innerText = total;
+    document.getElementById('resumen-direccion').innerText = direccion ? direccion : "Retiro en local";
+    document.getElementById('resumen-fecha').innerText = fecha;
+
+    // 2. Quitamos la clase 'hidden' para que aparezca en pantalla
+    document.getElementById('modal-confirmacion').classList.remove('hidden');
+}
+
+// Función para cerrar la ventanita
+function cerrarConfirmacion() {
+    document.getElementById('modal-confirmacion').classList.add('hidden');
+}
+
+// EXTRA: Si quieres que el cliente pueda enviar este mismo texto listo a tu WhatsApp
+function enviarAWhatsApp() {
+    const detalle = document.getElementById('resumen-productos').innerText;
+    const total = document.getElementById('resumen-total').innerText;
+    const fecha = document.getElementById('resumen-fecha').innerText;
+    
+    // Armamos el texto plano adaptado para WhatsApp
+    const textoMensaje = `¡Hola! Confirmamos la recepción de tu pedido. 🥐\n\n` +
+                         `*• Detalle:* ${detalle}\n` +
+                         `*• Valor total:* ${total}\n` +
+                         `*• Día de entrega:* ${fecha}\n\n` +
+                         `¡Gracias por tu compra!`;
+    
+    // Reemplaza el número de ejemplo por tu número real con código de país (ej: 593 para Ecuador)
+    const tuNumeroCelular = "593999999999"; 
+    
+    window.open(`https://wa.me/${tuNumeroCelular}?text=${encodeURIComponent(textoMensaje)}`, '_blank');
+}
+	
 </script>
 
 <!-- Botón para volver arriba -->
