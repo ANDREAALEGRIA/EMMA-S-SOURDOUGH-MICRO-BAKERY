@@ -1513,50 +1513,6 @@ type="text"
 
 </div>
 
-¡Ah, qué golazo! Ya veo perfectamente qué estás armando. Estás usando Tailwind CSS puro para los estilos (por clases como flex, bg-amber-600, hover:text-amber-700), y por lo que noto en los atributos onclick="toggleCarrito()" y onclick="toggleMenu()", todo tu sistema funciona con JavaScript clásico (Vanilla JS) directo en el navegador.
-
-Como tu página tiene un Carrito, lo ideal no es congelar el mensaje en el HTML estático, sino crear una ventana emergente (un Modal) o una sección que aparezca mágicamente con los datos reales cuando el cliente finalice su compra. Además, para que combine perfectamente con la estética de tu web de pancitos, adapté el diseño usando exactamente tus mismos colores ámbar (amber) y estilos redondeados (rounded-2xl).
-
-Aquí tienes la solución completa de cómo integrarlo en tu código:
-
-Paso 1: Pega el diseño del mensaje (en tu HTML)
-Vas a colocar este bloque de código al final de tu archivo HTML, justo antes de cerrar la etiqueta </body>. Por defecto estará oculto (hidden) y se activará solo cuando se procese un pedido.
-
-HTML
-<div id="modal-confirmacion" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-gray-100 transform transition-all">
-        
-        <div class="flex items-center gap-3 mb-4">
-            <div class="bg-amber-100 p-2 rounded-full text-amber-700">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-            </div>
-            <h3 class="text-lg font-bold text-gray-800">¡Pedido Recibido! 🥐</h3>
-        </div>
-
-        <p class="text-gray-600 text-sm mb-4">¡Hola! Confirmamos la recepción de tu pedido con los siguientes detalles:</p>
-        
-        <div class="bg-amber-50/50 border border-amber-100 rounded-xl p-4 mb-4 text-sm text-gray-700 space-y-2">
-            <p><strong>Detalle:</strong> <span id="resumen-productos" class="text-gray-600">--</span></p>
-            <p><strong>Valor total:</strong> <span id="resumen-total" class="font-bold text-amber-700">$0.00</span></p>
-            <p><strong>Dirección de entrega:</strong> <span id="resumen-direccion" class="text-gray-600">Por definir</span></p>
-            <p><strong>Día de entrega:</strong> <span id="resumen-fecha" class="text-gray-600">Mañana en la mañana</span></p>
-        </div>
-        
-        <p class="text-sm text-gray-600 mb-6">Para dejarlo programado en el horno, por favor confímanos tu forma de pago.</p>
-        
-        <div class="flex flex-col gap-2">
-            <button onclick="enviarAWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-2 text-sm shadow-md shadow-emerald-600/10">
-                Enviar comprobante por WhatsApp
-            </button>
-            <button onclick="cerrarConfirmacion()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium py-2 px-4 rounded-xl transition text-sm text-center">
-                Cerrar
-            </button>
-        </div>
-
-    </div>
-</div>
 </body>
 
 </html>
