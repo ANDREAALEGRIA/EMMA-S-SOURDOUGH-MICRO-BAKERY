@@ -22,96 +22,95 @@
            }
     </style>
 </head>
+	
 <body class="bg-gray-50 text-gray-800">
-
-    <!-- Navegación -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 items-center">
-            
-            <!-- Logo e Icono (Ahora interactivo) -->
-            <a href="#" class="flex-shrink-0 flex items-center gap-2 group transition-transform hover:scale-105 active:scale-95" title="Ir al inicio">
-            <!-- SVG del Logo -->
-                   <svg class="w-12 h-12 transition-colors group-hover:drop-shadow-md" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
-                    <rect x="2" y="4" width="20" height="16" rx="2" stroke="#94a3b8" stroke-width="1.5" />
-                    <path d="M2 10h20" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2" />
-                    <path d="M7 17c0-3.5 2-6 5-6s5 2.5 5 6H7z" fill="#d97706" stroke="#92400e" stroke-width="1.5" />
-                    <path d="M10 13l2 2m2-2l-2 2" stroke="#fef3c7" stroke-width="1.2" stroke-linecap="round" />
-                    <path d="M9 7c0-1 1-1 1-2M14 7c0-1 1-1 1-2" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round" />
-                   </svg>
-    
-             <!-- Texto del Logo -->
-                <span class="font-bold text-lg md:text-xl tracking-tight text-gray-900 leading-tight group-hover:text-amber-700 transition-colors">
-                 Emma's Sourdough<br class="sm:hidden"> Micro-Bakery
-                </span>
-            </a>
-
-            <!-- Bloque Derecho: Enlaces + Carrito -->
-            <div class="flex items-center gap-4 md:gap-8">
+<nav class="bg-white border-b border-gray-100 fixed top-0 left-0 w-full z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
                 
-                 <!-- Menú Escritorio (Con Buscador Interactivo) -->
-<div class="hidden md:flex items-center space-x-6">
-    <!-- Enlaces de Navegación -->
-    <div class="flex space-x-4">
-        <a href="#" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Inicio</a>
-        <a href="#productos" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Productos</a>
-        <a href="#contacto" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Contacto</a>
-    </div>
+                <a href="#" class="flex-shrink-0 flex items-center gap-2 group transition-transform hover:scale-105 active:scale-95" title="Ir al inicio">
+                    <svg class="w-12 h-12 transition-colors group-hover:drop-shadow-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="4" width="20" height="16" rx="2" stroke="#94a3b8" stroke-width="1.5" />
+                        <path d="M2 10h20" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2" />
+                        <path d="M7 17c0-3.5 2-6 5-6s5 2.5 5 6H7z" fill="#d97706" stroke="#92400e" stroke-width="1.5" />
+                        <path d="M10 13l2 2m2-2l-2 2" stroke="#fef3c7" stroke-width="1.2" stroke-linecap="round" />
+                        <path d="M9 7c0-1 1-1 1-2M14 7c0-1 1-1 1-2" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+        
+                    <span class="font-bold text-lg md:text-xl tracking-tight text-gray-900 leading-tight group-hover:text-amber-700 transition-colors">
+                        Emma's Sourdough<br class="sm:hidden"> Micro-Bakery
+                    </span>
+                </a>
 
-    <!-- Buscador Interactivo -->
-    <div class="relative group">
-        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-            <svg class="w-4 h-4 text-gray-400 group-focus-within:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-        </span>
-        <input
-            id="buscador-input" 		
-            type="text" 
-            placeholder="Buscar pan..." 
-            class="block w-48 pl-10 pr-3 py-1.5 border border-gray-200 rounded-full text-sm placeholder-gray-400
-                   focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 
-                   transition-all duration-300 focus:w-64 bg-gray-50/50"
-        >
-    </div>
-</div>
-</div>
+                <div class="flex items-center gap-4 md:gap-8">
+                    
+                    <div class="hidden md:flex items-center space-x-6">
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Inicio</a>
+                            <a href="#productos" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Productos</a>
+                            <a href="#contacto" class="text-gray-600 hover:text-amber-700 px-2 py-2 text-sm font-medium transition">Contacto</a>
+                        </div>
 
-                <!-- Bloque de botones (Carrito + Hamburguesa) -->
-<div class="flex items-center gap-2 md:gap-8">
-    
-    <!-- Botón Carrito (Visible en móvil y PC) -->
-    <button onclick="toggleCarrito()" class="relative p-2 text-gray-600 hover:text-amber-700 transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-        </svg>
-        <span class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-amber-600 rounded-full">0</span>
-    </button>
+                        <div class="relative group">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg class="w-4 h-4 text-gray-400 group-focus-within:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </span>
+                            <input
+                                id="buscador-input" 		
+                                type="text" 
+                                placeholder="Buscar pan..." 
+                                class="block w-48 pl-10 pr-3 py-1.5 border border-gray-200 rounded-full text-sm placeholder-gray-400
+                                       focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 
+                                       transition-all duration-300 focus:w-64 bg-gray-50/50"
+                            >
+                        </div>
+                    </div>
 
-                <!-- Botón Hamburguesa Corregido -->
-<button id="mobile-menu-button" class="text-gray-600 hover:text-amber-700 p-2 focus:outline-none flex items-center justify-center">
-    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-    </svg>
-</button>
-    </div>
+                    <div class="flex items-center gap-2 md:gap-4">
+                        <button onclick="toggleCarrito()" class="relative p-2 text-gray-600 hover:text-amber-700 transition-colors focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                            </svg>
+                            <span id="carrito-contador" class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-amber-600 rounded-full">0</span>
+                        </button>
 
-<!-- Menú Desplegable Móvil -->
-<div id="mobile-menu" class="hidden bg-white border-t border-gray-100 shadow-xl absolute top-full left-0 w-full z-50 p-4">
-    <!-- Buscador para Móvil -->
-    <div class="relative mb-4">
-        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-        </span>
-        <input 
-            id="buscador-input-movil"
-			type="text" 
-            placeholder="Buscar pan..." 
-            class="buscador-compartido block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-amber-500 bg-gray-50"
-        >
-    </div>
+                        <button id="mobile-menu-button" onclick="toggleMenu()" class="md:hidden text-gray-600 hover:text-amber-700 p-2 focus:outline-none flex items-center justify-center">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden bg-white border-t border-gray-100 shadow-xl absolute top-full left-0 w-full z-50 p-4">
+            <div class="relative mb-4">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </span>
+                <input 
+                    id="buscador-input-movil"
+                    type="text" 
+                    placeholder="Buscar pan..." 
+                    class="buscador-compartido block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-amber-500 bg-gray-50"
+                >
+            </div>
+
+            <div class="space-y-1">
+                <a href="#" onclick="toggleMenu()" class="block px-6 py-3 text-gray-600 hover:bg-amber-50 rounded-xl font-bold transition">Inicio</a>
+                <a href="#productos" onclick="toggleMenu()" class="block px-6 py-3 text-gray-600 hover:bg-amber-50 rounded-xl font-bold transition">Productos</a>
+                <a href="#contacto" onclick="toggleMenu()" class="block px-6 py-3 text-gray-600 hover:bg-amber-50 rounded-xl font-bold transition">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-20"></div>
 
     <!-- Enlaces -->
     <a href="#" onclick="toggleMenu()" class="block px-6 py-3 text-gray-600 hover:bg-amber-50 font-bold border-b border-gray-50">Inicio</a>
