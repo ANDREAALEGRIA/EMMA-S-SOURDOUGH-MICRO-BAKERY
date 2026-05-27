@@ -987,7 +987,7 @@ function enviarPedidoWhatsApp() {
  
  // 4. EL FORMATO: wa.me/numero
  const numero = "593998272773";
- const url = "https://wa.me" + numero + "?text=" + encodeURIComponent(mensaje);
+ const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
  
  // 5. REDIRECCIÓN DIRECTA
  window.location.href = url;
