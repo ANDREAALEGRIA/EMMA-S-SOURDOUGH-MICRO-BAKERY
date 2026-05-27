@@ -284,7 +284,7 @@ function obtenerUbicacionGPS() {
       const lon = posicion.coords.longitude;
       
       // Enlace corregido con el parámetro ?q= indispensable para Google Maps
-      urlGoogleMaps = "https://google.com" + lat + "," + lon;
+      urlGoogleMaps = "https://google.com/maps?q=" + lat + "," + lon;
       document.getElementById('enlace-mapa-input').value = urlGoogleMaps;
       
       // Cambiar diseño del botón a Éxito (Verde)
