@@ -176,7 +176,9 @@
     <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
         Horneados en lotes pequeños con fermentación natural para garantizar su frescura.
     </p>
-
+     <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+        ¿Restricciones o preferencias? --> Avísame si eres intolerante a la lactosa. Puedes cambiar el endulzante por alulosa por un costo adicional de $1.
+     </p>
    <!-- Información de Logística Organizada -->
 <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto text-sm text-gray-700">
     
@@ -619,7 +621,7 @@ const productos = [
         precio: 4.50, 
         descripcion: `¡El verdadero pan de verdad ha vuelto a tu mesa!
 		El pan de masa madre clásico es la esencia de nuestra micro-panadería. Elaborado con una mezcla equilibrada de harina y masa madre madura y activa, logramos una hogaza con una corteza dorada y rústica, y un interior suave y aireado 🥖✨.`, 
-        detalles: `Peso: 500 grs.
+        detalles: `Peso: 550 grs.
 		Ingredientes: • Harina • Masa madre • Agua filtrada • Sal`, 
         imagenes: ["https://shaggy-teal-04h1s9e4vf.edgeone.app/IMG_20260420_210813.jpg"] 
        },
@@ -642,14 +644,14 @@ const productos = [
         descripcion: `¡El match perfecto para tus hamburguesas! 
 		Estos panes de masa madre tienen una miga esponjosa pero con la estructura ideal para aguantar todas tus salsas sin romperse. Su sabor artesanal con un toque láctico eleva cualquier hamburguesa casera a un nivel profesional. Dorados, brillantes y con semillas de sésamo 🍔✨.`, 
         detalles: `Peso: Paquete de 6 panes de Hamburguesa de 80 gramos c/u.
-		Ingredientes:• Masa madre • Huevos • Harina • Azúcar morena • Mantequilla • Leche`, 
+		Ingredientes:• Masa madre • Huevos • Harina • Azúcar morena • Mantequilla • Leche • Sal`, 
         imagenes: ["https://www.image2url.com/r2/default/images/1778876120290-2e46cc8b-dfc8-404d-bdbf-d60403c88f80.jpg"] 
        },
 	   { 
         id: 4, 
         categoria: 'panes', 
         titulo: "English Muffins.", 
-        precio: 4.30, 
+        precio: 4.50, 
         descripcion: `¡El rey de los desayunos y brunches! 
 		Estos English Muffins de masa madre están llenos de esos alvéolos (agujeritos) perfectos para atrapar la mantequilla derretida, la mermelada o el huevo pochado. Tostados por fuera, increíblemente suaves por dentro y con ese toque único de la masa madre que los hace irresistibles 🍳🍯.`, 
         detalles: `Peso: Paquete de 6 pancitos de 80 gramos c/u.
@@ -664,7 +666,7 @@ const productos = [
         descripcion: `¡El pecado dulce que querrás repetir cada mañana!
 		¡Sabor profundo y fermentación perfecta!. Una receta magistral que lleva la babka tradicional a otro nivel mediante un proceso de masa madre lenta. El resultado es un brioche ligero y aromático, relleno de un suave fudge de chocolate y coronado con un streusel crocante. Dulce en su punto justo gracias al baño final de almíbar 🥖🤎.`, 
         detalles: `Peso: 440 grs.
-		Ingredientes:• Masa madre • Huevos • Harina • Azúcar morena • Mantequilla sin sal • Chocolate amargo 100% en polvo • Azúcar morena • Chocolate en cuadritos • Sal • Leche`, 
+		Ingredientes:• Masa madre • Huevos • Harina • Azúcar morena • Mantequilla sin sal • Chocolate amargo 100% en polvo • Azúcar morena • Chispas de chocolate  • Sal • Leche`, 
         imagenes: ["https://www.image2url.com/r2/default/images/1778876967337-639f66a9-a153-4270-943e-af825de8a88e.jpg", "https://www.image2url.com/r2/default/images/1778877006459-06232e87-fcd0-49e1-822a-36bf02d753f2.jpg"] 
        },
 	
@@ -676,7 +678,7 @@ const productos = [
         descripcion: `¡El bocado crujiente y achocolatado que transformará tus tardes!
 		Nuestros scones son el equilibrio perfecto entre una galleta rústica y un bizcocho tierno. Elaborados con chispas de chocolate semidulce ☕🤎.`, 
         detalles: `Paquete 1 unidad. 
-		Ingredientes:• Harina • Azúcar morena • Sal • Polvo de hornear • Mantequilla • Chispas chocolate • Huevos • Crema de leche • Leche • Extracto de vainilla`, 
+		Ingredientes:• Harina • Azúcar morena • Sal • Polvo de hornear • Mantequilla • Chispas de chocolate • Huevos • Crema de leche • Leche • Extracto de vainilla`, 
         imagenes: ["https://www.image2url.com/r2/default/images/1778793350672-5510bbfe-8252-43f4-ae03-4ec2d1be9c51.jpg", "https://www.image2url.com/r2/default/images/1777041466809-2a46a9a0-d93a-4e04-b831-34f42ddbaf29.jpg", "https://www.image2url.com/r2/default/images/1777044351530-5f648a1d-9b58-49e2-8e0a-648ed61535aa.jpg"] 
        },
 	   { 
@@ -708,8 +710,8 @@ const productos = [
         precio: 8.70, 
         descripcion: `¡El aroma de la felicidad horneada que te atrapará desde el primer segundo!
 		Nuestros Rolls de Canela no son como los tradicionales. Al utilizar masa madre activa, logramos una masa mucho más ligera, con un aroma complejo y una textura que se deshace en la boca. Horneados con mantequilla y leche entera, son el equilibrio perfecto entre lo dulce y lo artesanal.`, 
-        detalles: `Paquete de 6 rolls de canela.
-		Ingredientes: • Harina • Masa madre • Leche entera • Mantequilla • Azúcar morena • Huevos • Sal • Queso Mascarpone • Monk Fruit`, 
+        detalles: `Paquete de 6 rolls de canela ó si deseas más pequeños, pueden adaptarse!!!.
+		Ingredientes: • Harina • Masa madre • Leche entera • Mantequilla • Azúcar morena • Huevos • Sal • Queso Mascarpone`, 
         imagenes: ["https://depressed-amaranth-mfftstdu6a.edgeone.app/ROLLS_1.jpg", "https://awful-lavender-wpci6wnrqp.edgeone.app/ROLLS_2.jpg", "https://redundant-teal-mhqokn9i53.edgeone.app/ROLLS_3.jpg"] 
        },
 	   { 
