@@ -628,8 +628,8 @@ document.addEventListener("DOMContentLoaded", function() {
 const productos = [
        { 
         id: 1, 
-        categoria: 'hogazas', 
-        titulo: "Pan de masa madre clásico (Pan Blanco - Pan Integral).", 
+        categoria: 'panes', 
+        titulo: "Pan Tradicional.", 
         precio: 4.50, 
         descripcion: `¡El verdadero pan de verdad ha vuelto a tu mesa!
 		El pan de masa madre clásico es la esencia de nuestra micro-panadería. Elaborado con una mezcla equilibrada de harina y masa madre madura y activa, logramos una hogaza con una corteza dorada y rústica, y un interior suave y aireado 🥖✨.`, 
@@ -644,7 +644,7 @@ const productos = [
 	   { 
         id: 2, 
         categoria: 'panes', 
-        titulo: "Pan de Doble Chocolate Semiamargo.", 
+        titulo: "Pan de Chocolate Semiamargo.", 
         precio: 4.50, 
         descripcion: `¡Un viaje de ida para los verdaderos amantes del chocolate intenso!
 		Nuestra hogaza es una experiencia sensorial única. Elaborada con cacao orgánico para una profundidad de sabor inigualable. Este pan destaca por su miga tierna y el dulzor que lo aportan generosas chispas de chocolate que se funden en el interior, creando el equilibrio perfecto con nuestra masa madre madura 🍫🌾.`, 
@@ -685,89 +685,18 @@ const productos = [
 		Ingredientes:• Masa madre • Huevos • Harina • Azúcar morena • Mantequilla sin sal • Chocolate amargo 100% en polvo • Azúcar morena • Chispas de chocolate  • Sal • Leche`, 
         imagenes: ["https://www.image2url.com/r2/default/images/1778876967337-639f66a9-a153-4270-943e-af825de8a88e.jpg", "https://www.image2url.com/r2/default/images/1778877006459-06232e87-fcd0-49e1-822a-36bf02d753f2.jpg"] 
        },
-	
 	   { 
         id: 6, 
-        categoria: 'descartes', 
-        titulo: "Scones con Chispas de Chocolate.", 
-        precio: 1.50, 
-        descripcion: `¡El bocado crujiente y achocolatado que transformará tus tardes!
-		Nuestros scones son el equilibrio perfecto entre una galleta rústica y un bizcocho tierno. Elaborados con chispas de chocolate semidulce ☕🤎.`, 
-        detalles: `Paquete 1 unidad. 
-		Ingredientes:• Harina • Azúcar morena • Sal • Polvo de hornear • Mantequilla • Chispas de chocolate • Huevos • Crema de leche • Leche • Extracto de vainilla`, 
-        imagenes: ["https://www.image2url.com/r2/default/images/1778793350672-5510bbfe-8252-43f4-ae03-4ec2d1be9c51.jpg", "https://www.image2url.com/r2/default/images/1777041466809-2a46a9a0-d93a-4e04-b831-34f42ddbaf29.jpg", "https://www.image2url.com/r2/default/images/1777044351530-5f648a1d-9b58-49e2-8e0a-648ed61535aa.jpg"] 
+        categoria: 'brioche', 
+        titulo: "Brioche de Masa Madre.", 
+        precio: 6.50, // Ajusta aquí el precio de venta de tu pan de brioche
+        descripcion: `¡La máxima expresión de la panadería enriquecida y artesanal! Nuestro Brioche está elaborado con masa madre activa, logrando una miga extraordinariamente suave, aireada y con ese toque sutilmente 'buttery' que se deshace en la boca. Horneado con mantequilla y leche entera, perfecto para rebanar, hacer tostadas francesas o disfrutarlo solo.`, 
+        detalles: `Peso: 530 gramos.
+		Ingredientes:• Harina • Azúcar morena • Sal • Mantequilla • Huevos • Masa madre • Leche.`, 
+        imagenes: ["https://cdn.phototourl.com/free/2026-09-14-40eeacb9-0124-4740-900d-b3508483335c.jpg", "https://cdn.phototourl.com/free/2026-09-14-be7438c1-e241-46f8-985c-2df8bc6874e9.jpg"] 
        },
 	   { 
         id: 7, 
-        categoria: 'descartes', 
-        titulo: "Scones de Vainilla.", 
-        precio: 2.30, 
-        descripcion: `¡El bocado perfecto que transformará tus tardes de café!
-		Nuestros scones son el equilibrio perfecto entre una galleta rústica y un bizcocho tierno. Elaborados con descarte de masa madre ✨.`, 
-        detalles: `Peso: 180 gramos.
-		Ingredientes:• Harina • Azúcar morena • Sal • Polvo de hornear • Mantequilla • Huevos • Descarte de masa madre • Crema de leche • Extracto de vainilla`, 
-        imagenes: ["https://www.image2url.com/r2/default/images/1778877291559-c1d34fd9-5ee3-4a52-a44b-6ce2133085cf.jpg"] 
-       },
-	   { 
-        id: 8, 
-        categoria: 'tortas', 
-        titulo: "Torta de Zanahoria.", 
-        precio: 25, 
-        descripcion: `¡Tan hermosa como deliciosa! 
-		Este Naked Cake de zanahoria aprovecha el descarte de masa madre para lograr una humedad y textura inigualables. El contraste visual de sus capas con el frosting de queso crema es espectacular, y su sabor especiado equilibra a la perfección la cremosidad y el toque ácido del relleno. Una obra de arte rústica 🥕🎂.`, 
-        detalles: `Ideal para 20 personas.
-		Ingredientes:• Descarte de masa madre • Huevos • Crema agria • Extracto de vainilla • Aceite de canola • Harina • Azúcar morena • Canela • Nueces • Almendras • Jengibre • Clavo de olor • Polvo de hornear •Bicarbonato de sodio • Sal • Zanahoria`, 
-        imagenes: ["https://www.image2url.com/r2/default/images/1778792961360-78dedfbc-914e-49b7-9222-604ae05a477a.jpg", "https://www.image2url.com/r2/default/images/1778793042452-3383c2e1-5699-431d-8bdf-412f3a2d9d9e.jpg"] 
-       },
-	   { 
-        id: 9, 
-        categoria: 'rolls', 
-        titulo: "Rolls de Canela.", 
-        precio: 8.70, 
-        descripcion: `¡El aroma de la felicidad horneada que te atrapará desde el primer segundo!
-		Nuestros Rolls de Canela no son como los tradicionales. Al utilizar masa madre activa, logramos una masa mucho más ligera, con un aroma complejo y una textura que se deshace en la boca. Horneados con mantequilla y leche entera, son el equilibrio perfecto entre lo dulce y lo artesanal.`, 
-        detalles: `Paquete de 6 rolls de canela (¡o si los deseas más pequeños, puedes ajustarlos hasta en 10 mini rolls!).
-		Nuestra crema de mascarpone es el toque ideal porque está endulzada con Monkfruit: cuida tu salud y tus niveles de azúcar sin sacrificar el delicioso sabor original...!
-		Ingredientes: • Harina • Masa madre • Leche entera • Mantequilla • Azúcar morena • Huevos • Sal • Queso Mascarpone • Monk Fruit`, 
-        imagenes: ["https://www.image2url.com/r2/default/images/1789411703676-254cdb85-921b-43d3-83ae-409592ce86d3.jpg", "https://www.image2url.com/r2/default/images/1789411644818-e76786a0-f9cb-46c1-8992-8bc4cdc256a1.jpg", "https://www.image2url.com/r2/default/images/1789411768386-c91b30d5-1d1d-4711-818a-30adeb0985ed.jpg"] 
-       },
-	   { 
-        id: 10, 
-        categoria: 'adicionales', 
-        titulo: "Mantequilla de Almendras Tostadas.", 
-        precio: 7.99, 
-        descripcion: `¡Pura cremosidad dorada que llevará tus desayunos a un nivel gourmet!
-		Disfruta de la pureza de la almendra en su máxima expresión. Almendras blanqueadas y ligeramente tostadas. 100% natural, sin conservantes ni aceites añadidos. Ideal para quienes buscan una textura más fina y un sabor más suave.`, 
-        detalles: `Peso: 230 grs. 
-		Puedes solicitarla con tu endulzante favorito: miel de abeja, maple o sin azúcar añadida.
-		Ingredientes: • 100% almendras blanqueadas y tostadas • Pizca de sal (Opcional)`, 
-        imagenes: ["https://www.image2url.com/r2/default/images/1777044687663-659807bf-5237-4172-ad69-781fe738e327.jpg", "https://www.image2url.com/r2/default/images/1777044990719-3610696b-5c66-4e64-b887-ac3853bc4427.jpg"] 
-       },
-	   { 
-        id: 11, 
-        categoria: 'adicionales', 
-        titulo: "Mantequilla de Almendras Blanqueadas y Tostadas.", 
-        precio: 9.99, 
-        descripcion: `¡El sabor más intenso y tostado de la naturaleza en una textura ultra cremosa!
-		Nuestra mantequilla es 100% natural, elaborada en pequeños lotes para garantizar su frescura. El secreto está en el tostado lento de las almendras enteras, lo que libera sus aceites naturales y crea un sabor intenso, ahumado y ligeramente dulce sin necesidad de azúcar añadida.`,
-		detalles: `Peso: 230 grs. 
-		Puedes solicitarla con tu endulzante favorito: miel de abeja, maple o sin azúcar añadida y sin pizca de sal.
-		Ingredientes:• 100% almendras tostadas • Pizca de sal (Opcional)`,
-        imagenes: ["https://www.image2url.com/r2/default/images/1777044687663-659807bf-5237-4172-ad69-781fe738e327.jpg", "https://www.image2url.com/r2/default/images/1777044990719-3610696b-5c66-4e64-b887-ac3853bc4427.jpg"] 
-       },
-	{ 
-        id: 12, 
-        categoria: 'adicionales', 
-        titulo: "Dulce de leche endulzado con alulosa.", 
-        precio: 4.99, 
-        descripcion: `¡El sabor tradicional de siempre, ahora sin culpa! 
-		Este dulce de leche artesanal está endulzado 100% con alulosa, logrando esa textura cremosa y el color dorado perfecto que tanto te gusta. Es la opción ideal para darte un gusto saludable, apto para dietas bajas en carbohidratos y perfecto para rellenar tus postres de masa madre sin alterar tu glucosa 🍯✨.`,
-		detalles: `Peso: 230 grs. 
-		Ingredientes:• Leche entera • Alulosa • Bicarbonato de sodio • Leche en polvo • Goma Xantane`,
-        imagenes: ["https://www.image2url.com/r2/default/images/1778879017267-df696141-44e1-4a46-82d6-0f7fcd994543.jpg"] 
-       },
-	{ 
-        id: 13, 
         categoria: 'pizzas', 
         titulo: "Pizzas de masa madre precocidas.", 
         precio: 3.00,
@@ -780,8 +709,30 @@ const productos = [
         Ingredientes:• Harina • Agua tibia Filtrada • Masa madre activa • Sal • Aceite de oliva • Miel`,
         imagenes: ["https://www.image2url.com/r2/default/images/1789414845183-2617c0fe-8a31-4e13-a193-02717a5212c1.jpg", "https://www.image2url.com/r2/default/images/1789414880200-3d2cad50-3b31-4c64-9263-49bb85d485aa.jpg", "https://www.image2url.com/r2/default/images/1789414911463-3cfb53b8-7c64-46d8-91ee-feb64a44072c.jpg"] 
        },
-	{ 
-        id: 15, 
+	   { 
+        id: 8, 
+        categoria: 'descartes', 
+        titulo: "Scones de Chocolate.", 
+        precio: 1.50, 
+        descripcion: `¡El bocado crujiente y achocolatado que transformará tus tardes!
+		Nuestros scones son el equilibrio perfecto entre una galleta rústica y un bizcocho tierno. Elaborados con chispas de chocolate semidulce ☕🤎.`, 
+        detalles: `Paquete 1 unidad. 
+		Ingredientes:• Harina • Azúcar morena • Sal • Polvo de hornear • Mantequilla • Chispas de chocolate • Huevos • Crema de leche • Leche • Extracto de vainilla`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1778793350672-5510bbfe-8252-43f4-ae03-4ec2d1be9c51.jpg", "https://www.image2url.com/r2/default/images/1777041466809-2a46a9a0-d93a-4e04-b831-34f42ddbaf29.jpg", "https://www.image2url.com/r2/default/images/1777044351530-5f648a1d-9b58-49e2-8e0a-648ed61535aa.jpg"] 
+       },
+	   { 
+        id: 9, 
+        categoria: 'descartes', 
+        titulo: "Scones de Vainilla.", 
+        precio: 2.30, 
+        descripcion: `¡El bocado perfecto que transformará tus tardes de café!
+		Nuestros scones son el equilibrio perfecto entre una galleta rústica y un bizcocho tierno. Elaborados con descarte de masa madre ✨.`, 
+        detalles: `Peso: 180 gramos.
+		Ingredientes:• Harina • Azúcar morena • Sal • Polvo de hornear • Mantequilla • Huevos • Descarte de masa madre • Crema de leche • Extracto de vainilla`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1778877291559-c1d34fd9-5ee3-4a52-a44b-6ce2133085cf.jpg"] 
+       },
+	   { 
+        id: 10, 
         categoria: 'descartes', 
         titulo: "Mix de scones (A partir de 10 unidades).", 
         precio: 2.00, 
@@ -792,16 +743,65 @@ const productos = [
 		Ingredientes:• Harina • Azúcar morena • Sal • Polvo de hornear • Mantequilla • Huevos • Descarte de masa madre • Crema de leche • Extracto de vainilla`, 
         imagenes: ["https://www.image2url.com/r2/default/images/1789414383640-2930a480-4ca8-4ef6-a5d1-3d4d0932fd3d.jpg"] 
        },
-	{ 
-        id: 16, 
-        categoria: 'brioche', 
-        titulo: "Brioche de Masa Madre.", 
-        precio: 6.50, // Ajusta aquí el precio de venta de tu pan de brioche
-        descripcion: `¡La máxima expresión de la panadería enriquecida y artesanal! Nuestro Brioche está elaborado con masa madre activa, logrando una miga extraordinariamente suave, aireada y con ese toque sutilmente 'buttery' que se deshace en la boca. Horneado con mantequilla y leche entera, perfecto para rebanar, hacer tostadas francesas o disfrutarlo solo.`, 
-        detalles: `Peso: 530 gramos.
-		Ingredientes:• Harina • Azúcar morena • Sal • Mantequilla • Huevos • Masa madre • Leche.`, 
-        imagenes: ["https://cdn.phototourl.com/free/2026-09-14-40eeacb9-0124-4740-900d-b3508483335c.jpg", "https://cdn.phototourl.com/free/2026-09-14-be7438c1-e241-46f8-985c-2df8bc6874e9.jpg"] 
+	  { 
+        id: 11, 
+        categoria: 'rolls', 
+        titulo: "Rolls de Canela.", 
+        precio: 8.70, 
+        descripcion: `¡El aroma de la felicidad horneada que te atrapará desde el primer segundo!
+		Nuestros Rolls de Canela no son como los tradicionales. Al utilizar masa madre activa, logramos una masa mucho más ligera, con un aroma complejo y una textura que se deshace en la boca. Horneados con mantequilla y leche entera, son el equilibrio perfecto entre lo dulce y lo artesanal.`, 
+        detalles: `Paquete de 6 rolls de canela (¡o si los deseas más pequeños, puedes ajustarlos hasta en 10 mini rolls!).
+		Nuestra crema de mascarpone es el toque ideal porque está endulzada con Monkfruit: cuida tu salud y tus niveles de azúcar sin sacrificar el delicioso sabor original...!
+		Ingredientes: • Harina • Masa madre • Leche entera • Mantequilla • Azúcar morena • Huevos • Sal • Queso Mascarpone • Monk Fruit`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1789411703676-254cdb85-921b-43d3-83ae-409592ce86d3.jpg", "https://www.image2url.com/r2/default/images/1789411644818-e76786a0-f9cb-46c1-8992-8bc4cdc256a1.jpg", "https://www.image2url.com/r2/default/images/1789411768386-c91b30d5-1d1d-4711-818a-30adeb0985ed.jpg"] 
        },
+	  { 
+        id: 12, 
+        categoria: 'tortas', 
+        titulo: "Torta de Zanahoria.", 
+        precio: 25, 
+        descripcion: `¡Tan hermosa como deliciosa! 
+		Este Naked Cake de zanahoria aprovecha el descarte de masa madre para lograr una humedad y textura inigualables. El contraste visual de sus capas con el frosting de queso crema es espectacular, y su sabor especiado equilibra a la perfección la cremosidad y el toque ácido del relleno. Una obra de arte rústica 🥕🎂.`, 
+        detalles: `Ideal para 20 personas.
+		Ingredientes:• Descarte de masa madre • Huevos • Crema agria • Extracto de vainilla • Aceite de canola • Harina • Azúcar morena • Canela • Nueces • Almendras • Jengibre • Clavo de olor • Polvo de hornear •Bicarbonato de sodio • Sal • Zanahoria`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1778792961360-78dedfbc-914e-49b7-9222-604ae05a477a.jpg", "https://www.image2url.com/r2/default/images/1778793042452-3383c2e1-5699-431d-8bdf-412f3a2d9d9e.jpg"] 
+       },
+	   { 
+        id: 13, 
+        categoria: 'adicionales', 
+        titulo: "Mantequilla de Almendras Tostadas.", 
+        precio: 7.99, 
+        descripcion: `¡Pura cremosidad dorada que llevará tus desayunos a un nivel gourmet!
+		Disfruta de la pureza de la almendra en su máxima expresión. Almendras blanqueadas y ligeramente tostadas. 100% natural, sin conservantes ni aceites añadidos. Ideal para quienes buscan una textura más fina y un sabor más suave.`, 
+        detalles: `Peso: 230 grs. 
+		Puedes solicitarla con tu endulzante favorito: miel de abeja, maple o sin azúcar añadida.
+		Ingredientes: • 100% almendras blanqueadas y tostadas • Pizca de sal (Opcional)`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1777044687663-659807bf-5237-4172-ad69-781fe738e327.jpg", "https://www.image2url.com/r2/default/images/1777044990719-3610696b-5c66-4e64-b887-ac3853bc4427.jpg"] 
+       },
+	   { 
+        id: 14, 
+        categoria: 'adicionales', 
+        titulo: "Mantequilla de Almendras Blanqueadas y Tostadas.", 
+        precio: 9.99, 
+        descripcion: `¡El sabor más intenso y tostado de la naturaleza en una textura ultra cremosa!
+		Nuestra mantequilla es 100% natural, elaborada en pequeños lotes para garantizar su frescura. El secreto está en el tostado lento de las almendras enteras, lo que libera sus aceites naturales y crea un sabor intenso, ahumado y ligeramente dulce sin necesidad de azúcar añadida.`,
+		detalles: `Peso: 230 grs. 
+		Puedes solicitarla con tu endulzante favorito: miel de abeja, maple o sin azúcar añadida y sin pizca de sal.
+		Ingredientes:• 100% almendras tostadas • Pizca de sal (Opcional)`,
+        imagenes: ["https://www.image2url.com/r2/default/images/1777044687663-659807bf-5237-4172-ad69-781fe738e327.jpg", "https://www.image2url.com/r2/default/images/1777044990719-3610696b-5c66-4e64-b887-ac3853bc4427.jpg"] 
+       },
+	   { 
+        id: 15, 
+        categoria: 'adicionales', 
+        titulo: "Dulce de leche endulzado con alulosa.", 
+        precio: 4.99, 
+        descripcion: `¡El sabor tradicional de siempre, ahora sin culpa! 
+		Este dulce de leche artesanal está endulzado 100% con alulosa, logrando esa textura cremosa y el color dorado perfecto que tanto te gusta. Es la opción ideal para darte un gusto saludable, apto para dietas bajas en carbohidratos y perfecto para rellenar tus postres de masa madre sin alterar tu glucosa 🍯✨.`,
+		detalles: `Peso: 230 grs. 
+		Ingredientes:• Leche entera • Alulosa • Bicarbonato de sodio • Leche en polvo • Goma Xantane`,
+        imagenes: ["https://www.image2url.com/r2/default/images/1778879017267-df696141-44e1-4a46-82d6-0f7fcd994543.jpg"] 
+       },
+	
 ];
 
 // 2. VARIABLES DE ESTADO (Memoria del carrito y categoría)
