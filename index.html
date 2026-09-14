@@ -370,7 +370,8 @@ document.addEventListener("DOMContentLoaded", function() {
     <button onclick="filtrar('descartes', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Preparaciones con Descartes</button>
 	<button onclick="filtrar('adicionales', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Adicionales</button>
 	<button onclick="filtrar('tortas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Tortas</button>
-	<button onclick="filtrar('pizzas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Pizzas</button>	
+	<button onclick="filtrar('pizzas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Pizzas</button>
+    <button onclick="filtrar('brioche', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Brioche</button>
     </div>
 </div>
 
@@ -778,7 +779,7 @@ const productos = [
 	{ 
         id: 15, 
         categoria: 'descartes', 
-        titulo: "Mix de scones.", 
+        titulo: "Mix de scones (A partir de 10 unidades)", 
         precio: 2.00, 
         descripcion: `¡El bocado perfecto que transformará tus tardes de café!
 		Nuestros scones son el equilibrio perfecto entre una galleta rústica y un bizcocho tierno. Elaborados con descarte de masa madre ✨.`, 
@@ -786,6 +787,16 @@ const productos = [
 		Nota: Pedidos disponibles a partir de 10 unidades. ¿Los deseas en un tamaño más pequeño para tu mesa de dulces o evento? ¡Se pueden adaptar a tu medida, cotiza con nosotros!
 		Ingredientes:• Harina • Azúcar morena • Sal • Polvo de hornear • Mantequilla • Huevos • Descarte de masa madre • Crema de leche • Extracto de vainilla`, 
         imagenes: ["https://www.image2url.com/r2/default/images/1789414383640-2930a480-4ca8-4ef6-a5d1-3d4d0932fd3d.jpg"] 
+       },
+	{ 
+        id: 16, 
+        categoria: 'brioche', 
+        titulo: "Brioche de Masa Madre", 
+        precio: 4.50, // Ajusta aquí el precio de venta de tu pan de brioche
+        descripcion: `¡La máxima expresión de la panadería enriquecida y artesanal! Nuestro Brioche está elaborado con masa madre activa bajo un proceso de fermentación lenta de más de 12 horas, logrando una miga extraordinariamente suave, aireada y con ese toque sutilmente 'buttery' que se deshace en la boca. Horneado con mantequilla premium y leche entera, es perfecto para rebanar, hacer tostadas francesas o disfrutarlo solo.`, 
+        detalles: `Peso: 420 gramos.
+		Ingredientes:• Harina • Azúcar morena • Sal • Mantequilla • Huevos • Masa madre • Leche.`, 
+        imagenes: ["https://www.image2url.com/r2/default/images/1789414383640-2930a480-4ca8-4ef6-a5d1-3d4d0932fd3d.jpg", "https://cdn.phototourl.com/free/2026-09-14-be7438c1-e241-46f8-985c-2df8bc6874e9.jpg"] 
        },
 ];
 
