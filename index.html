@@ -363,7 +363,6 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="flex flex-wrap justify-center gap-3">
     <!-- El botón "Todos" empieza con el nuevo estilo activo: fondo ámbar claro y texto café -->
     <button onclick="filtrar('todos', event)" class="filter-btn bg-amber-100 text-amber-900 border-amber-300 px-6 py-2 rounded-full font-bold shadow-sm transition">Todos</button>
-    <button onclick="filtrar('hogazas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Hogazas</button>
     <button onclick="filtrar('panes', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Panes</button>
     <button onclick="filtrar('rolls', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Rolls de Canela</button>
     <button onclick="filtrar('galletas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Galletas</button>
@@ -371,7 +370,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	<button onclick="filtrar('adicionales', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Adicionales</button>
 	<button onclick="filtrar('tortas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Tortas</button>
 	<button onclick="filtrar('pizzas', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Pizzas</button>
-    <button onclick="filtrar('brioche', event)" class="filter-btn bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full font-medium hover:bg-amber-50 transition">Brioche</button>
     </div>
 </div>
 
@@ -687,7 +685,7 @@ const productos = [
        },
 	   { 
         id: 6, 
-        categoria: 'brioche', 
+        categoria: 'panes', 
         titulo: "Brioche de Masa Madre.", 
         precio: 6.50, // Ajusta aquí el precio de venta de tu pan de brioche
         descripcion: `¡La máxima expresión de la panadería enriquecida y artesanal! Nuestro Brioche está elaborado con masa madre activa, logrando una miga extraordinariamente suave, aireada y con ese toque sutilmente 'buttery' que se deshace en la boca. Horneado con mantequilla y leche entera, perfecto para rebanar, hacer tostadas francesas o disfrutarlo solo.`, 
